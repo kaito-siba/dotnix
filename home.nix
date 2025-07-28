@@ -23,10 +23,11 @@
 
     # productivity
     lazygit
+    gh
 
     # gui
-    firefox
-    vscode
+    slack
+    notion-app-enhanced
   ];
 
   programs.git = {
@@ -67,6 +68,18 @@
     # package = inputs.wezterm.packages.${pkgs.system}.default;
   };
 
+  programs.wofi = {
+    enable = true;
+  };
+
+  programs.vscode = {
+    enable = true;
+  };
+
+  programs.gh = {
+    enable = true;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -74,7 +87,8 @@
       bind = 
         [
           "$mod, B, exec, firefox"
-          "$mod, T, exec, wezterm"
+          "$mod, T, exec, kitty"
+	  "SUPER, SPACE, exec, wofi --show drun"
         ]
         ++ (
          # workspaces
@@ -89,6 +103,10 @@
         9)
       );
     };
+    extraConfig = ''
+    monitor=DP-6,3840x2160@60,0x0,1.5
+    monitor=HDMI-A-3,1920x1080@60,2560x360,1
+    '';
   };
 
   home.sessionVariables = {
