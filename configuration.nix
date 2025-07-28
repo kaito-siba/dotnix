@@ -43,16 +43,27 @@
   };
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  services.xserver = {
+    enable = true;
+
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    displayManager = {
+      gdm.enable = true;
+    };
+
+    videoDrivers = ["nvidia"];
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.w963n = {
     isNormalUser = true;
+    # shell = [ pkgs.zsh ];
     description = "w963n";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
     packages = with pkgs; [];
   };
 
@@ -63,10 +74,24 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    zsh
     git
-    vim
     wget
+    neovim
   ];
+
+  fonts.fonts = with pkgs; [
+    noto-fonts
+  ];
+
+  hardware.graphics = {
+    enable = true;
+  };
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
