@@ -4,6 +4,7 @@
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -17,22 +18,79 @@
     # };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations.siba-ultimate-pc = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        # Import the previous configuration.nix we used,
-        # so the old configuration file still takes effect
-        ./configuration.nix
+  outputs = 
+    { 
+      self, 
+      nixpkgs, 
+      nixpkgs-unstable, 
+      home-manager, 
+      ... 
+    }:
+    let
+      systems = [
+        "x86_64-linux"
+	"x86_64-darwin"
+	"aarch64-darwin"
+     ];
 
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
+     forAllSystems = nixpkgs.lib.genAttrs systems;
 
-          home-manager.users.w963n = import ./home.nix;
-        }
+     mkModules =
+       {
+          host,
+	  system,
+	  user ? "w963n",
+       }:
+       let
+         # substritute "x86_64-linux" => "linux"
+	 os = builtins.elemAt (builtins.match ".*-(.*)" system) 0;
+	 specialArgs = {
+	   pkgs-unstable = import nixpkgs-unstable {
+	     inherit system;
+	     config.allowUnfreePredicate =
+	       pkg:
+	       builtins.elem (nixpkgs.lib.getName pkg) [
+	         "slack"
+	       ];
+           };
+         };
+      in
+      [
+        ./hosts/${host}
+	home-manager.nixosModules.home-manager
+	{
+	  home-manager.useGlobalPkgs = true;
+	  home-manager.useUserPackages = true;
+	  home-manager.backupFileExtension = "backup";
+	  home-manager.users.${user} = import ./home/${os};
+	  home-manager.extraSpecialArgs = specialArgs;
+	}
       ];
+    in
+    {
+      nixosConfigurations = 
+        builtins.mapAttrs
+	  (
+	    host: system:
+	      nixpkgs.lib.nixosSystem {
+	        inherit system;
+		modules = mkModules { inherit system host; };
+	      }
+	  )
+	  {
+	    siba-ultimate-pc = "x86_64-linux";
+	    radiata = "x86_64-linux";
+	  };
+
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
-  };
+
+    nixConfig = {
+      experimental-features = [
+        "nix-command"
+	"flakes"
+      ];
+
+      auto-optimise-store = true;
+    };
 }
