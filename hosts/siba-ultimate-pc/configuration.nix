@@ -77,9 +77,20 @@
     enable = true;
   };
 
+  hardware.opengl = {
+    enable = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      libvdpau-va-gl
+      nvidia-vaapi-driver
+    ];
+  };
+
   hardware.nvidia = {
     modesetting.enable = true;
     open = true;
+    nvidiaSettings = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
