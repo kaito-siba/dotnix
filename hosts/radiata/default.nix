@@ -5,10 +5,19 @@
     ./configuration.nix
   ];
 
-  users.users.w963n = {
+  users.users.rkv12 = {
     isNormalUser = true;
-    description = "w963n";
+    description = "rkv12";
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+  };
+
+  home = {
+    username = "rkv12";
+    homeDirectory = "/home/rkv12";
+    stateVersion = "24.11";
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1"; # Electron apps to use Wayland
+    };
   };
 
   networking.hostName = "radiata";

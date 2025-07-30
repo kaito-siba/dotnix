@@ -2,5 +2,7 @@
 {
   imports = [
     ../base
+
+    ./wayland.nix
   ];
 }
