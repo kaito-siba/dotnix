@@ -17,5 +17,7 @@
     ghq # Remote repository management made easy
 
     neofetch
+
+    wl-clipboard
   ];
 }

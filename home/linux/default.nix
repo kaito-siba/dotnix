@@ -4,5 +4,6 @@
     ../base
 
     ./wayland.nix
+    ./hyprlock.nix
   ];
 }

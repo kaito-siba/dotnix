@@ -24,6 +24,7 @@
       nixpkgs, 
       nixpkgs-unstable, 
       home-manager, 
+      nur,
       ... 
     }:
     let

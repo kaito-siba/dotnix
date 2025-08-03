@@ -6,6 +6,7 @@
     ./boot.nix
   ];
 
+  programs.zsh.enable = true;
   users.users.w963n = {
     isNormalUser = true;
     description = "w963n";

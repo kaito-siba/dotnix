@@ -2,6 +2,7 @@
 {
   imports = [
     ./core.nix
-    ./firefox.nix
+    ./firefox
+    ./vscode
   ];
 }
