@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -11,6 +11,7 @@
     isNormalUser = true;
     description = "w963n";
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    shell = pkgs.zsh;
   };
 
   networking.hostName = "siba-ultimate-pc";
