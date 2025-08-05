@@ -16,5 +16,6 @@
     ./neovim
     ./c.nix
     ./tmux
+    ./nodejs.nix
   ];
 }
