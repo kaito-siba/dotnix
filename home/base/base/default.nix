@@ -7,7 +7,6 @@
     ./kitty.nix
     ./lazygit.nix
     ./starship.nix
-    ./tmux.nix
     ./vscode.nix
     ./wezterm.nix
     ./wofi.nix
@@ -16,5 +15,6 @@
     ./helix.nix
     ./neovim
     ./c.nix
+    ./tmux
   ];
 }
