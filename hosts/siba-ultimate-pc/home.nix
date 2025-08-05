@@ -1,4 +1,6 @@
-{
+let
+  wallpaperPath = "~/nixos/assets/wallpaper_2.jpg";
+in {
   w963n = {
     imports = [
      ../../home/linux
@@ -13,11 +15,39 @@
       };
     };
 
+
+    systemd.user.targets.hyprland-session = {
+      Unit = {
+        Description = "Hyprland compositor session";
+        Documentation = ["man:systemd.special(7)"];
+        BindsTo = ["graphical-session.target"];
+        Wants = ["graphical-session-pre.target"];
+        After = ["graphical-session-pre.target"];
+      };
+    };
+
     wayland.windowManager.hyprland = {
       extraConfig = ''
+      exec-once = fcitx5 -d
+
+      exec-once = dbus-update-activation-environment --systemd --all
+      exec-once = systemctl --user start hyprland-session.target
+
       monitor=DP-6,3840x2160@60,0x0,1.5
       monitor=HDMI-A-3,1920x1080@60,2560x360,1
+
+      workspace = 1, monitor:DP-6
+      workspace = 2, monitor:DP-6
+      workspace = 3, monitor:HDMI-A-3
+      workspace = 4, monitor:HDMI-A-3
       '';
+    };
+
+    services.hyprpaper = {
+      settings = {
+        preload = [ wallpaperPath ];
+        wallpaper = [ "DP-6,${wallpaperPath}" "HDMI-A-3,${wallpaperPath}" ];
+      };
     };
   };
 }
