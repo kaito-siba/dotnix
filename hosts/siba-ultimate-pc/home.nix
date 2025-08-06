@@ -3,7 +3,7 @@ let
 in {
   w963n = {
     imports = [
-     ../../home/linux
+       ../../home/linux
     ];
 
     home = {
