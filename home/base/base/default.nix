@@ -6,7 +6,6 @@
     ./git.nix
     ./kitty.nix
     ./lazygit.nix
-    ./starship.nix
     ./vscode.nix
     ./wezterm.nix
     ./wofi.nix
@@ -17,5 +16,6 @@
     ./c.nix
     ./tmux
     ./nodejs.nix
+    ./starship
   ];
 }
