@@ -37,5 +37,9 @@
       };
       "Groups/0/Items/0".Name = "mozc";
     };
+
+    fcitx5.settings.addons = {
+        mozc.globalSection.InitialMode = "Direct";
+    };
   };
 }
