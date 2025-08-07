@@ -5,5 +5,6 @@
     ./docker.nix
     ./i18n.nix
     ./greetd.nix
+    ./core.nix
   ];
 }

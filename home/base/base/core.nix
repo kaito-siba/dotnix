@@ -19,5 +19,6 @@
     neofetch
 
     wl-clipboard
+    bat
   ];
 }
