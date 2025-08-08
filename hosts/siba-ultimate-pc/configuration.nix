@@ -52,6 +52,7 @@
     zsh
     git
     wget
+    cudatoolkit
   ];
 
   fonts.fonts = with pkgs; [
@@ -77,6 +78,8 @@
     open = true;
     nvidiaSettings = true;
   };
+
+  nixpkgs.config.cudaSupport = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

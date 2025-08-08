@@ -1,5 +1,21 @@
-{ pkgs, lib, ... }:
-{
+{ pkgs, lib, config, ... }:let
+  mkElectronWayland = app: extraFlags: pkgs.symlinkJoin {
+     name = "${app.name}-wayland";
+     paths = [ app ];
+     buildInputs = [ pkgs.makeWrapper ];
+     postBuild = ''
+      wrapProgram $out/bin/* \
+        --add-flags "--enable-features=UseOzonePlatform ${extraFlags}"
+     '';
+  };
+in {
+  nixpkgs.overlays = [
+   (final: prev: {
+      lmstudio = mkElectronWayland prev.lmstudio
+       "--enable-features=WaylandWindowDecorations --ozone-platform-hint=auto";
+    })
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -66,5 +82,20 @@
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Ice";
     size = 8;
+  };
+
+  xdg.configFile."electron-flags.conf".text = ''
+    --enable-features=UseOzonePlatform
+    --ozone-platform=wayland
+  '';
+
+  xdg.configFile."code-flags.conf".source = config.xdg.configFile."electron-flags.conf".source;
+  xdg.configFile."spotify-flags.conf".source = config.xdg.configFile."electron-flags.conf".source;
+
+  home.sessionVariables = {
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
 }
