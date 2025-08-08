@@ -20,5 +20,7 @@
 
     wl-clipboard
     bat
+    python3Full
+    uv
   ];
 }
