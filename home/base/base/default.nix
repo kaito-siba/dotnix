@@ -17,5 +17,6 @@
     ./tmux
     ./nodejs.nix
     ./starship
+    ./ai
   ];
 }

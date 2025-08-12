@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, config, mysecrets, ... }:let
+  username = "w963n";
+in {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -8,14 +10,23 @@
   ];
 
   programs.zsh.enable = true;
-  users.users.w963n = {
+  users.users.${username} = {
     isNormalUser = true;
-    description = "w963n";
+    description = "main user";
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
     shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKHhELz0IRNMJXiIT6kjHJ36Z8IOlPnanK1nixZUpKVG w963n"
-    ];
+  };
+
+
+  age.identityPaths = [
+    "/home/${username}/.ssh/id_ed25519"
+  ];
+
+  age.secrets."infra/siba_ultimate_pc" = {
+    file = "${mysecrets}/infra/siba_ultimate_pc.pubkey.age";
+    path = "/etc/ssh/authorized_keys.d/${username}";
+    mode = "0400";
+    owner = username;
   };
 
   system.stateVersion = "25.05";
