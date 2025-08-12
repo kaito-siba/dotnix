@@ -11,7 +11,7 @@ let
   };
 in
 {
-  home.packages = [
+  home.package = [
     lmstudio
   ];
 

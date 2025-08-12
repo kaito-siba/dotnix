@@ -11,6 +11,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ragenix.url = "github:yaxitech/ragenix";
+    mysecrets = {
+      url = "github:kaito-siba/nix-secrets";
+      flake = false;
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -24,6 +30,8 @@
       nixpkgs, 
       nixpkgs-unstable, 
       home-manager, 
+      ragenix,
+      mysecrets,
       ... 
     }:
     let
@@ -56,6 +64,7 @@
       in
       [
         ./hosts/${host}
+        ragenix.nixosModules.default
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -73,6 +82,9 @@
             host: system:
               nixpkgs.lib.nixosSystem {
                 inherit system;
+                specialArgs = {
+                  inherit ragenix mysecrets;
+                };
                 modules = mkModules { inherit system host; };
               }
           )

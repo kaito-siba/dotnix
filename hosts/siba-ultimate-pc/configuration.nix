@@ -33,15 +33,6 @@
     videoDrivers = ["nvidia"];
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.w963n = {
-    isNormalUser = true;
-    # shell = [ pkgs.zsh ];
-    description = "w963n";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
-    packages = with pkgs; [];
-  };
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

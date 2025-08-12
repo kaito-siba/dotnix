@@ -1,0 +1,22 @@
+projects = { "/Users/k-nanchi/src/work/github.com/sibaservice/knowledge-portal-universal-backend/worktrees/temp" = { trust_level = "trusted" } }
+[mcp_servers.brave-search]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-brave-search"]
+env = { "BRAVE_API_KEY" = "INSERT_API_KEY" }
+
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "codex"]
+
+[mcp_servers.cipher-aggregator]
+type = "stdio"
+command = "cipher"
+args = ["--mode", "mcp"]
+env = { "OLLAMA_BASE_URL" = "http://localhost" }
+
+[mcp_servers.context7]
+command = "npx"
+args = ["--yes", "@upstash/context7-mcp"]
+env = {}
+
+notify = ["bash", "/Users/my-user/.codex/notify_macos.sh"]
