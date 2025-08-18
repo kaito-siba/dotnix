@@ -46,17 +46,9 @@
     cudatoolkit
   ];
 
-  fonts.fonts = with pkgs; [
-    noto-fonts
-  ];
-
   hardware.graphics = {
     enable = true;
-  };
-
-  hardware.opengl = {
-    enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
       vaapiVdpau
       libvdpau-va-gl
