@@ -23,5 +23,9 @@
     python3Full
     uv
     lazysql
+
+    # aws
+    awscli2
+    ssm-session-manager-plugin
   ];
 }
