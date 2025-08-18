@@ -24,7 +24,11 @@ in {
         [
           "$mod, B, exec, firefox"
           "$mod, T, exec, kitty"
-	  "SUPER, SPACE, exec, wofi --show drun"
+          "$mod, S, exec, slack"
+          "SUPER, SPACE, exec, wofi --show drun"
+          "CTRL_SHIFT, code:11, exec, grim -g \"$(slurp)\" - | swappy -f -"
+          "CTRL_SHIFT, code:12, exec, grim - | swappy -f -"
+          "CTRL_SHIFT, code:13, exec, grim -g \"$(slurp)\" ${config.xdg.userDirs.pictures}/Screenshots/$(date +%Y-%m-%d-%H%M%S).png"
         ]
         ++ (
          # workspaces

@@ -2,6 +2,7 @@
 {
   imports = [
     ../base
+    ./screenshot.nix
 
     ./wayland.nix
     ./hyprlock.nix
