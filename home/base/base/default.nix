@@ -6,7 +6,6 @@
     ./git.nix
     ./kitty.nix
     ./lazygit.nix
-    ./vscode.nix
     ./wezterm.nix
     ./wofi.nix
     ./yazi.nix

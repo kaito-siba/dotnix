@@ -58,6 +58,7 @@
                pkg:
                builtins.elem (nixpkgs.lib.getName pkg) [
                  "slack"
+                 "vscode"
                ];
           };
         };
