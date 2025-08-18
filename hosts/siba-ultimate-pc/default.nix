@@ -29,5 +29,7 @@ in {
     owner = username;
   };
 
+  programs.nh.flake = "/home/${username}/nixos";
+
   system.stateVersion = "25.05";
 }
