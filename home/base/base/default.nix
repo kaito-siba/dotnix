@@ -18,5 +18,6 @@
     ./starship
     ./ai
     ./javascript.nix
+    ./node2nix
   ];
 }

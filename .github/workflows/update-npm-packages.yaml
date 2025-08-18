@@ -1,0 +1,14 @@
+name: update-npm-packages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 10 * * *
+jobs:
+  nix-update:
+    name: Update lockfile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run node2nix
+        run: |
+          cd home/base/base/node2nix/packages
+          nix-shell -p nodePackages.node2nix --command "node2nix -i ./node-packages.json -o node-packages.nix"
