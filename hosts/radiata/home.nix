@@ -24,7 +24,13 @@ in {
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user start hyprland-session.target
 
+        exec-once = copyq --start-server
+
         monitor = DP-1, 3440x1440@120, 0x0, 1
+
+        windowrulev2 = float,        class:^(com\.github\.hluk\.copyq)$
+        windowrulev2 = center,       class:^(com\.github\.hluk\.copyq)$
+        windowrulev2 = size 800 600, class:^(com\.github\.hluk\.copyq)$
       '';
     };
 

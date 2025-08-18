@@ -8,5 +8,6 @@
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpanel.nix
+    ./clipboard.nix
   ];
 }

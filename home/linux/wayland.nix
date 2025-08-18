@@ -29,6 +29,7 @@ in {
           "CTRL_SHIFT, code:11, exec, grim -g \"$(slurp)\" - | swappy -f -"
           "CTRL_SHIFT, code:12, exec, grim - | swappy -f -"
           "CTRL_SHIFT, code:13, exec, grim -g \"$(slurp)\" ${config.xdg.userDirs.pictures}/Screenshots/$(date +%Y-%m-%d-%H%M%S).png"
+          "CTRL_SHIFT, V, exec, copyq toggle"
         ]
         ++ (
          # workspaces
