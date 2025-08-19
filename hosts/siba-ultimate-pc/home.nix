@@ -32,7 +32,7 @@ in {
 
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user start hyprland-session.target
-        exec-once = copyq --start-server
+        exec-once = walker --gapplication-service
 
         monitor=DP-6,3840x2160@60,0x0,1.5
         monitor=HDMI-A-3,1920x1080@60,2560x360,1
