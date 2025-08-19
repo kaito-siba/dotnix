@@ -13,12 +13,12 @@
     yq-go
     eza
     fzf
+    visidata
 
     ghq # Remote repository management made easy
 
     neofetch
 
-    wl-clipboard
     bat
     python3Full
     uv
