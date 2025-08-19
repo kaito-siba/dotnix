@@ -9,5 +9,6 @@
     ./hyprpaper.nix
     ./hyprpanel.nix
     ./clipboard.nix
+    ./walker
   ];
 }
