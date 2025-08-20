@@ -7,6 +7,10 @@
     delta = {
       enable = true;
     };
+    ignores = [
+      ".envrc"
+      ".direnv/"
+    ];
   }; 
 }
 

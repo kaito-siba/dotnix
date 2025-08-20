@@ -28,4 +28,9 @@
     awscli2
     ssm-session-manager-plugin
   ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
