@@ -5,5 +5,6 @@
     ./firefox
     ./vscode
     ./ai.nix
+    ./zen-browser.nix
   ];
 }

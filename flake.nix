@@ -17,6 +17,11 @@
       flake = false;
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -32,6 +37,7 @@
       home-manager, 
       ragenix,
       mysecrets,
+      zen-browser,
       ... 
     }:
     let
@@ -60,7 +66,8 @@
                  "slack"
                  "vscode"
                ];
-          };
+           };
+           inherit zen-browser;
         };
       in
       [
