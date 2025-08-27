@@ -2,11 +2,11 @@
 let
   codex-rs = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.23.0";
+    version = "0.25.0";
 
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-x86_64-unknown-linux-musl.tar.gz";
-      sha256 = "sha256-2n8QV2BuS47X/8DMLgvLiDSk0Vz+O0Yw+BrUbuLocJA=";
+      sha256 = "sha256-+tiAKvRcrKZwfEqQDI7iB+icpH3xnQumRGLMMfyVS5c=";
     };
 
     dontUnpack = true;
