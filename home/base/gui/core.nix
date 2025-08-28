@@ -7,5 +7,6 @@
     ]) ++
     (with pkgs-unstable; [
       slack
+      discord
     ]);
 }

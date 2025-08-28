@@ -65,6 +65,7 @@
                builtins.elem (nixpkgs.lib.getName pkg) [
                  "slack"
                  "vscode"
+                 "discord"
                ];
            };
            inherit zen-browser;

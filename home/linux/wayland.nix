@@ -22,7 +22,7 @@ in {
       "$mod" = "ALT";
       bind = 
         [
-          "$mod, B, exec, firefox"
+          "$mod, B, exec, zen"
           "$mod, T, exec, kitty"
           "$mod, S, exec, slack"
           # "SUPER, SPACE, exec, wofi --show drun"
@@ -31,7 +31,7 @@ in {
           "CTRL_SHIFT, code:12, exec, grim - | swappy -f -"
           "CTRL_SHIFT, code:13, exec, grim -g \"$(slurp)\" ${config.xdg.userDirs.pictures}/Screenshots/$(date +%Y-%m-%d-%H%M%S).png"
           # "CTRL_SHIFT, V, exec, ~/.local/bin/clipmenu-wofi"
-          "CTRL_SHIFT, V, exec, walker --mode clipboard"
+          # "CTRL_SHIFT, V, exec, walker --mode clipboard"
         ]
         ++ (
          # workspaces
@@ -99,10 +99,17 @@ in {
   xdg.configFile."code-flags.conf".source = config.xdg.configFile."electron-flags.conf".source;
   xdg.configFile."spotify-flags.conf".source = config.xdg.configFile."electron-flags.conf".source;
 
+  xdg.configFile."xdg-desktop-portal/portals.conf".text = ''
+    [preferred]
+    default=gtk
+    org.freedesktop.impl.portal.FileChooser=gtk
+  '';
+
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     GDK_BACKEND = "wayland";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
   };
+
 }
