@@ -29,6 +29,7 @@ in {
     wayland.windowManager.hyprland = {
       extraConfig = ''
         exec-once = fcitx5 -d
+        exec-once = hyprlock || hyprctl dispatch exit
 
         exec-once = dbus-update-activation-environment --systemd --all
         exec-once = systemctl --user start hyprland-session.target
