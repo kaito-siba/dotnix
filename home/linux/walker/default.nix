@@ -1,8 +1,20 @@
-{ pkgs, config, ... }:
+{ pkgs, config, walker, ... }:
 {
-  home.packages = with pkgs; [
-    walker
+  imports = [
+    walker.homeManagerModules.default
   ];
 
-  xdg.configFile."walker/config.toml".source = ./config.toml;
+  programs.walker = {
+    enable = true;
+    runAsService = true;
+
+    theme.style = ''
+      * {
+        @window_bg_color: #dcd7ba;
+        @accent_bg_color: #dcd7ba;
+        @theme_fg_color: #dcd7ba;
+      }
+    '';
+  };
+
 }

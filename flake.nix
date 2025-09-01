@@ -22,6 +22,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -38,6 +43,7 @@
       ragenix,
       mysecrets,
       zen-browser,
+      walker,
       ... 
     }:
     let
@@ -68,7 +74,7 @@
                  "discord"
                ];
            };
-           inherit zen-browser;
+           inherit zen-browser walker;
         };
       in
       [
