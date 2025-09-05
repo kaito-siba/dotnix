@@ -27,6 +27,8 @@
     # aws
     awscli2
     ssm-session-manager-plugin
+
+    devenv
   ];
 
   programs.direnv = {

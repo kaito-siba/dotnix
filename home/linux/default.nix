@@ -2,6 +2,7 @@
 {
   imports = [
     ../base
+    ./core.nix
     ./screenshot.nix
 
     ./wayland.nix
