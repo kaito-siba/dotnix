@@ -23,7 +23,10 @@
     };
 
     walker = {
-      url = "github:abenz1267/walker";
+      type = "github";
+      owner = "abenz1267";
+      repo = "walker";
+      ref = "v1.0.0-beta-26";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
