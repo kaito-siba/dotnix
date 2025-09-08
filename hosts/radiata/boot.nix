@@ -2,12 +2,12 @@
 
 {
   fileSystems."/boot" = {
-    device = "/dev/sda1";
+    device = "/dev/disk/by-uuid/214968ef-c733-4432-aff8-a5ffab7748f6";
     fsType = "ext4";
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/sda3";
+    device = "/dev/disk/by-uuid/3FC0-A77D";
     fsType = "vfat";
     options = [ "fmask=0077" "dmask=0077" ];
   };
@@ -41,4 +41,3 @@
 
   boot.loader.timeout = 10;
 }
-  

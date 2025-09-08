@@ -4,6 +4,7 @@
     ../base
     ./core.nix
     ./screenshot.nix
+    ./core.nix
 
     ./wayland.nix
     ./hyprlock.nix
