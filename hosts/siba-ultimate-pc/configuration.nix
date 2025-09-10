@@ -89,6 +89,9 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  #
+
+  nix.settings.trusted-users = [ "root" "w963n" ];
 
   services.greetd.settings.initial_session.user = "w963n";
 }
