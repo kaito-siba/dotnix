@@ -7,6 +7,7 @@
     delta = {
       enable = true;
     };
+    lfs.enable = true;
     ignores = [
       ".envrc"
       ".direnv/"
