@@ -68,11 +68,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1757439276,
-        "narHash": "sha256-7wtGVB+mh+1B54NsbwV1D1tqiqNi2GYp4f0MHvOs9mc=",
+        "lastModified": 1757566330,
+        "narHash": "sha256-kY9+nnHe3/q4DhzSrGwk2xQnSQUEUvVsqRe2279xHUE=",
         "owner": "abenz1267",
         "repo": "elephant",
-        "rev": "a3d7de77b49f4ae0798d9aa0748f6417a52cffca",
+        "rev": "45a471396f8e29b1cca8a9b29108cf73a7e438e2",
         "type": "github"
       },
       "original": {
@@ -388,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757481500,
-        "narHash": "sha256-zYL8X9zUXQFQCQgiYk5YOIpf4vkFbvwP9S551Eqtpsk=",
+        "lastModified": 1757564596,
+        "narHash": "sha256-fSSMQszoMaclMmRScHnYoaXBQ1iqG4VfPvlT8bisr6g=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "ce326c21966ea63eeb82dabdf1cff8786ee88f6d",
+        "rev": "df05119f93f8d14635641a07150902a489c8c2a5",
         "type": "github"
       },
       "original": {
