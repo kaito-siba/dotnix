@@ -23,11 +23,8 @@
     };
 
     walker = {
-      type = "github";
-      owner = "abenz1267";
-      repo = "walker";
-      ref = "v1.0.0-beta-26";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     #TODO use nightly
