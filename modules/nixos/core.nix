@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   # https://github.com/tomrijndorp/vscode-finditfaster/issues/44
   services.envfs.enable = true;
@@ -14,4 +14,10 @@
     substituters = ["https://walker.cachix.org"];
     trusted-public-keys = ["walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="];
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib  # glibc, libstdc++ など
+    zlib openssl
+  ];
 }
