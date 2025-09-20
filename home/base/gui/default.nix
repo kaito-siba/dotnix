@@ -6,5 +6,6 @@
     ./vscode
     ./ai.nix
     ./zen-browser.nix
+    ./ghostty
   ];
 }

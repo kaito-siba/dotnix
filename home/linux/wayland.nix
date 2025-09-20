@@ -23,7 +23,7 @@ in {
       bind = 
         [
           "$mod, B, exec, zen"
-          "$mod, T, exec, kitty"
+          "$mod, T, exec, ghostty"
           "$mod, S, exec, slack"
           # "SUPER, SPACE, exec, wofi --show drun"
           "SUPER, SPACE, exec, walker"

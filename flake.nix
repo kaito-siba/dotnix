@@ -27,6 +27,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -44,6 +49,7 @@
       mysecrets,
       zen-browser,
       walker,
+      ghostty,
       ... 
     }:
     let
@@ -74,7 +80,7 @@
                  "discord"
                ];
            };
-           inherit zen-browser walker;
+           inherit zen-browser walker ghostty;
         };
       in
       [
