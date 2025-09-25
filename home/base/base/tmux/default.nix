@@ -92,6 +92,15 @@
       
       # 設定ファイルをリロード
       bind-key -T prefix r source-file ~/.config/tmux/tmux.conf \; display-message 'Reloard was successful.'
+
+      # toggle popup
+      bind C-p popup -xC -yC -w95% -h95% -E -d "#{pane_current_path}" '\
+        if [ popup = $(tmux display -p -F "#{session_name}") ]; then \
+          tmux detach-client ; \
+        else \
+          tmux attach -c $(tmux display -p -F "#{pane_current_path}") -t popup || tmux new -s popup ; \
+        fi \
+      '
       
       #################################################
       #
