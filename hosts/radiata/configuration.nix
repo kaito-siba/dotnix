@@ -122,5 +122,7 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  nix.settings.trusted-users = [ "root" "rkv12" ];
+
   services.greetd.settings.initial_session.user = "rkv12";
 }
