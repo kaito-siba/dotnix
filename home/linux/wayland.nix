@@ -61,10 +61,10 @@ in {
       };
       decoration = {
         rounding = 10;
-        active_opacity = 0.8;
-        inactive_opacity = 0.8;
+        active_opacity = 0.9;
+        inactive_opacity = 0.9;
         blur = {
-          enabled = true;
+          enabled = false;
           size = 6;
           passes = 1;
           xray = false;
