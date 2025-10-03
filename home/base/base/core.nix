@@ -29,6 +29,8 @@
     ssm-session-manager-plugin
 
     devenv
+
+    mariadb
   ];
 
   programs.direnv = {
