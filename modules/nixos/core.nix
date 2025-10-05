@@ -20,4 +20,8 @@
     stdenv.cc.cc.lib  # glibc, libstdc++ など
     zlib openssl
   ];
+
+  boot.extraModprobeConfig = ''
+    options nvidia-drm modeset=1 fbdev=0
+  '';
 }

@@ -73,6 +73,7 @@
     modesetting.enable = true;
     open = true;
     nvidiaSettings = true;
+    powerManagement.enable = true;
   };
 
   # Install firefox.
