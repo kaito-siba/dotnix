@@ -5,3 +5,7 @@ shell = "zsh"
 [plugins.zsh-fzf-ghq]
 local = "~/.config/zsh/plugins/zsh-ghq-fzf"
 use = ["zsh-ghq-fzf.plugin.zsh"]
+
+[plugins.zsh-fzf-git-worktree]
+local = "~/.config/zsh/plugins/zsh-git-worktree-fzf"
+use = ["zsh-git-worktree-fzf.plugin.zsh"]

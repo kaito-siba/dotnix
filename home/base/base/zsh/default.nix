@@ -15,6 +15,8 @@
     initContent = ''
       stty -ixon
       bindkey '^R' _atuin_search-widget
+      bindkey -r '^T'
+      bindkey '^F' fzf-file-widget
     '';
     initExtra = ''
       eval "$(sheldon source)"
@@ -43,4 +45,5 @@
   # custom plugins
   xdg.configFile."sheldon/plugins.toml".source = ./plugins.toml;
   xdg.configFile."zsh/plugins/zsh-ghq-fzf/zsh-ghq-fzf.plugin.zsh".source = ./zsh-ghq-fzf.plugin.zsh;
+  xdg.configFile."zsh/plugins/zsh-git-worktree-fzf/zsh-git-worktree-fzf.plugin.zsh".source = ./zsh-git-worktree-fzf.plugin.zsh;
 }
