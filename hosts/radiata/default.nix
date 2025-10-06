@@ -41,5 +41,7 @@
     # extraUpFlags = [ "--accept-dns=true" "--ssh" "--operator=$USER" ];
   };
 
+  programs.nh.flake = "/home/${username}/nixos";
+
   system.stateVersion = "24.11";
 }
