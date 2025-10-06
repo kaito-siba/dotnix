@@ -12,7 +12,6 @@
     jq
     yq-go
     eza
-    fzf
     visidata
 
     ghq # Remote repository management made easy

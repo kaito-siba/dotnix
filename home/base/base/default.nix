@@ -9,7 +9,7 @@
     ./wezterm.nix
     ./wofi.nix
     ./yazi.nix
-    ./zsh.nix
+    ./zsh
     ./helix.nix
     ./neovim
     ./c.nix

@@ -1,0 +1,7 @@
+shell = "zsh"
+
+[plugins]
+
+[plugins.zsh-fzf-ghq]
+local = "~/.config/zsh/plugins/zsh-ghq-fzf"
+use = ["zsh-ghq-fzf.plugin.zsh"]
