@@ -21,6 +21,7 @@ require("lazy").setup({
 		-- lazy extra plugins
 		{ import = "lazyvim.plugins.extras.dap.core" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
+		{ import = "lazyvim.plugins.extras.util.rest" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
