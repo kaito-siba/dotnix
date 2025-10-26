@@ -1,4 +1,6 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:let
+  username = "rkv12";
+in  {
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -27,7 +29,7 @@
   programs.zsh.enable = true;
   users.users.rkv12 = {
     isNormalUser = true;
-    description = "rkv12";
+    description = username;
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
     shell = pkgs.zsh;
   };
