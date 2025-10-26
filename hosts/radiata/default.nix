@@ -40,7 +40,8 @@ in  {
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "client";
-    # extraUpFlags = [ "--accept-dns=true" "--ssh" "--operator=$USER" ];
+    extraUpFlags = [ "--accept-dns=true" ];
+    extraSetFlags = [ "--ssh" "--operator=$USER" ];
   };
 
   programs.nh.flake = "/home/${username}/nixos";
