@@ -7,6 +7,7 @@ in {
     ./configuration.nix
     ./boot.nix
     ./network.nix
+    ./user.nix
   ];
 
   programs.zsh.enable = true;
