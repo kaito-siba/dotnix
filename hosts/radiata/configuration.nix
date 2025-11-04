@@ -67,11 +67,18 @@
 
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      vulkan-loader
+    ];
+    extraPackages32 = with pkgs; [
+      vulkan-loader
+    ];
   };
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false;
     nvidiaSettings = true;
     powerManagement.enable = true;
   };
