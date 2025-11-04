@@ -18,33 +18,61 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
-    settings = {
+    settings = let
+      workspaceLetters = [
+        "A" "B" "C" "D" "E" "F" "G" "I" "M" "N" "O" "P" "R" "S" "T"
+        "U" "V" "W" "X" "Y" "Z"
+      ];
+    in {
       "$mod" = "ALT";
       bind = 
         [
-          "$mod, B, exec, zen"
-          "$mod, T, exec, ghostty"
-          "$mod, S, exec, slack"
-          # "SUPER, SPACE, exec, wofi --show drun"
           "SUPER, SPACE, exec, walker"
+          "SUPER, B, exec, zen-twilight"
+          "SUPER, T, exec, ghostty"
+          "SUPER, S, exec, slack"
           "CTRL_SHIFT, code:11, exec, grim -g \"$(slurp)\" - | swappy -f -"
           "CTRL_SHIFT, code:12, exec, grim - | swappy -f -"
           "CTRL_SHIFT, code:13, exec, grim -g \"$(slurp)\" ${config.xdg.userDirs.pictures}/Screenshots/$(date +%Y-%m-%d-%H%M%S).png"
-          # "CTRL_SHIFT, V, exec, ~/.local/bin/clipmenu-wofi"
-          # "CTRL_SHIFT, V, exec, walker --mode clipboard"
+          "$mod, slash, layoutmsg, orientationnext"
+          "$mod, comma, layoutmsg, orientationprev"
+          "$mod, H, movefocus, l"
+          "$mod, J, movefocus, d"
+          "$mod, K, movefocus, u"
+          "$mod, L, movefocus, r"
+          "$mod, Q, killactive"
+          "$mod SHIFT, H, movewindow, l"
+          "$mod SHIFT, J, movewindow, d"
+          "$mod SHIFT, K, movewindow, u"
+          "$mod SHIFT, L, movewindow, r"
+          "$mod SHIFT, minus, resizeactive, -50 0"
+          "$mod SHIFT, equal, resizeactive, 50 0"
+          "$mod, TAB, workspace, previous"
+          "$mod SHIFT, TAB, moveworkspacetomonitor, r"
+          "$mod SHIFT, semicolon, submap, service"
+          "CTRL, SPACE, workspace, name:T"
         ]
         ++ (
          # workspaces
          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-         builtins.concatLists (builtins.genList (i:
-          let ws = i + 1;
-          in [
-            "$mod, code:1${toString i}, workspace, ${toString ws}"
-            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-          ]
+          builtins.concatLists (builtins.genList (i:
+            let ws = i + 1;
+            in [
+              "$mod, code:1${toString i}, workspace, ${toString ws}"
+              "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+            ]
+          ) 9)
         )
-        9)
-      );
+        ++ (
+          builtins.concatLists (builtins.map (ws: [
+            "$mod, ${ws}, workspace, name:${ws}"
+            "$mod SHIFT, ${ws}, movetoworkspace, name:${ws}"
+          ]) workspaceLetters)
+        );
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
       input = {
         repeat_delay = 300;
         repeat_rate = 30;
@@ -82,6 +110,13 @@ in {
         ];
       };
     };
+    extraConfig = ''
+      submap = service
+      bind = , escape, submap, reset
+      bind = , f, togglefloating
+      bind = , r, exec, hyprctl reload
+      submap = reset
+    '';
   };
 
   home.pointerCursor = {
