@@ -23,11 +23,31 @@ return {
 		dependencies = {
 			"jose-elias-alvarez/typescript.nvim",
 			init = function()
-				require("lazyvim.util").lsp.on_attach(function(_, buffer)
-          -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-					vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
-				end)
+				local group = vim.api.nvim_create_augroup("kurumi_typescript_mappings", { clear = true })
+				vim.api.nvim_create_autocmd("LspAttach", {
+					group = group,
+					callback = function(event)
+						local client = vim.lsp.get_client_by_id(event.data.client_id)
+						if not client or (client.name ~= "tsserver" and client.name ~= "ts_ls") then
+							return
+						end
+						local function run_first_available(cmds)
+							for _, cmd in ipairs(cmds) do
+								if vim.fn.exists(":" .. cmd) == 2 then
+									vim.cmd(cmd)
+									return
+								end
+							end
+							vim.notify("TypeScript helper command is not available", vim.log.levels.WARN)
+						end
+						vim.keymap.set("n", "<leader>co", function()
+							run_first_available({ "TypescriptOrganizeImports", "TSToolsOrganizeImports" })
+						end, { buffer = event.buf, desc = "Organize Imports" })
+						vim.keymap.set("n", "<leader>cR", function()
+							run_first_available({ "TypescriptRenameFile", "TSToolsRenameFile" })
+						end, { buffer = event.buf, desc = "Rename File" })
+					end,
+				})
 			end,
 		},
 		---@class PluginLspOpts
