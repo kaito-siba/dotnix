@@ -1,5 +1,5 @@
 -- jsonls schema catalog
-local catalog_data = require("schema-catalog")
+local catalog_data = require("data.schema-catalog")
 local schemas = catalog_data.schemas
 
 return {
