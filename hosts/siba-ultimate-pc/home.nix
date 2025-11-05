@@ -37,10 +37,38 @@ in {
         monitor=DP-6,3840x2160@60,0x0,1.5
         monitor=HDMI-A-3,1920x1080@60,2560x360,1
 
-        workspace = 1, monitor:DP-6
+        workspace = 1, monitor:DP-6, persistent:true, default:true
         workspace = 2, monitor:DP-6
-        workspace = 3, monitor:HDMI-A-3
-        workspace = 4, monitor:HDMI-A-3
+        workspace = 3, monitor:DP-6
+        workspace = 4, monitor:DP-6
+        workspace = 5, monitor:DP-6
+        workspace = 6, monitor:DP-6
+        workspace = 7, monitor:DP-6
+        workspace = 8, monitor:DP-6
+        workspace = 9, monitor:DP-6
+        workspace = 0, monitor:DP-6
+        workspace = A, monitor:DP-6
+        workspace = C, monitor:DP-6
+        workspace = E, monitor:DP-6
+        workspace = F, monitor:DP-6
+        workspace = G, monitor:DP-6
+        workspace = I, monitor:DP-6
+        workspace = M, monitor:DP-6
+        workspace = N, monitor:DP-6
+        workspace = O, monitor:DP-6
+        workspace = P, monitor:DP-6
+        workspace = R, monitor:DP-6
+        workspace = T, monitor:DP-6
+        workspace = U, monitor:DP-6
+        workspace = V, monitor:DP-6
+        workspace = W, monitor:DP-6
+        workspace = X, monitor:DP-6
+        workspace = Y, monitor:DP-6
+        workspace = Z, monitor:DP-6
+
+        workspace = B, monitor:HDMI-A-3, persistent:true, default:true
+        workspace = S, monitor:HDMI-A-3, persistent:true, default:false
+        workspace = D, monitor:HDMI-A-3, persistent:true, default:false
 
         windowrulev2 = float,        class:^(com\.github\.hluk\.copyq)$
         windowrulev2 = center,       class:^(com\.github\.hluk\.copyq)$
