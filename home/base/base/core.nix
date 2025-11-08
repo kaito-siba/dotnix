@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   home.packages = with pkgs; [
     # archives
@@ -27,10 +27,10 @@
     awscli2
     ssm-session-manager-plugin
 
-    devenv
-
     mariadb
-  ];
+  ] ++ (with pkgs-unstable; [
+    devenv
+  ]);
 
   programs.direnv = {
     enable = true;
