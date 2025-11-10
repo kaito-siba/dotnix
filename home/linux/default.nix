@@ -12,5 +12,6 @@
     ./hyprpanel.nix
     ./clipboard.nix
     ./walker
+    ./smoothcsv.nix
   ];
 }
