@@ -40,20 +40,20 @@ in
   };
 
   # open csv files with smoothcsv by default
-  xdg.mimeApps = {
-    enable = true;
-
-    defaultApplications = {
-      "text/csv"                 = [ "smoothcsv.desktop" ];
-      "text/x-csv"               = [ "smoothcsv.desktop" ];
-      "application/csv"          = [ "smoothcsv.desktop" ];
-      "application/vnd.ms-excel" = [ "smoothcsv.desktop" ];
-    };
-
-    associations.added = {
-      "text/csv" = [ "smoothcsv.desktop" ];
-    };
-  };
+  # xdg.mimeApps = {
+  #   enable = true;
+  #
+  #   defaultApplications = {
+  #     "text/csv"                 = [ "smoothcsv.desktop" ];
+  #     "text/x-csv"               = [ "smoothcsv.desktop" ];
+  #     "application/csv"          = [ "smoothcsv.desktop" ];
+  #     "application/vnd.ms-excel" = [ "smoothcsv.desktop" ];
+  #   };
+  #
+  #   associations.added = {
+  #     "text/csv" = [ "smoothcsv.desktop" ];
+  #   };
+  # };
 }
 
 
