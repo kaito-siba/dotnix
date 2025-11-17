@@ -24,12 +24,10 @@
 
     elephant = {
       url = "github:abenz1267/elephant";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     walker = {
       url = "github:abenz1267/walker";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.elephant.follows = "elephant";
     };
 

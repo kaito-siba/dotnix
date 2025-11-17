@@ -9,6 +9,7 @@ disable_mouse = false           # disable mouse (on input and list only)
 debug = false                   # enables debug printing for some stuff, f.e. keybinds
 page_jump_items = 10            # number of items to skip with Page Up/Down
 hide_quick_activation = false   # globally hide the quick activation buttons
+resume_last_query = false       # open walker with the last query in place
 
 [shell]
 anchor_top = true
@@ -109,14 +110,16 @@ bluetooth = [
   { action = "trust", bind = "ctrl t", after = "AsyncReload" },
   { action = "untrust", bind = "ctrl t", after = "AsyncReload" },
   { action = "pair", bind = "Return", after = "AsyncReload" },
-  { action = "connect", bind = "Return", after = "AsyncReload" },
-  { action = "disconnect", bind = "Return", after = "AsyncReload" },
+  { action = "connect", default = true, bind = "Return", after = "AsyncReload" },
+  { action = "disconnect", default = true, bind = "Return", after = "AsyncReload" },
 ]
 
 archlinuxpkgs = [
   { action = "install", bind = "Return", default = true },
   { action = "remove", bind = "Return" },
   { action = "show_all", label = "show all", bind = "ctrl i", after = "AsyncClearReload" },
+  { action = "refresh", label = "refresh", bind = "ctrl r", after = "AsyncReload" },
+  { action = "visit_url", label = "open URL", bind = "ctrl o" },
   { action = "show_installed", label = "show installed", bind = "ctrl i", after = "AsyncClearReload" },
 ]
 
@@ -131,7 +134,6 @@ websearch = [{ action = "search", default = true, bind = "Return" }]
 desktopapplications = [
   { action = "start", default = true, bind = "Return" },
   { action = "start:keep", label = "open+next", bind = "shift Return", after = "KeepOpen" },
-
   { action = "new_instance", label = "new instance", bind = "ctrl Return" },
   { action = "new_instance:keep", label = "new+next", bind = "ctrl alt Return", after = "KeepOpen" },
   { action = "pin", bind = "ctrl p", after = "AsyncReload" },
@@ -147,14 +149,23 @@ files = [
   { action = "copyfile", label = "copy file", bind = "ctrl c" },
 ]
 
+1password = [
+  { action = "copy_password", label = "copy password", default = true, bind = "Return" },
+  { action = "copy_username", label = "copy username", bind = "shift Return" },
+  { action = "copy_2fa", label = "copy 2fa", bind = "ctrl Return" },
+]
+
 todo = [
   { action = "save", default = true, bind = "Return", after = "AsyncClearReload" },
+  { action = "save_next", label = "save & new", bind = "shift Return", after = "AsyncClearReload" },
   { action = "delete", bind = "ctrl d", after = "AsyncClearReload" },
-  { action = "active", bind = "Return", after = "Nothing" },
-  { action = "inactive", bind = "Return", after = "Nothing" },
+  { action = "active", default = true, bind = "Return", after = "Nothing" },
+  { action = "inactive", default = true, bind = "Return", after = "Nothing" },
   { action = "done", bind = "ctrl f", after = "Nothing" },
   { action = "change_category", bind = "ctrl y", label = "change category", after = "Nothing" },
   { action = "clear", bind = "ctrl x", after = "AsyncClearReload" },
+  { action = "create", bind = "ctrl a", after = "AsyncClearReload" },
+  { action = "search", bind = "ctrl a", after = "AsyncClearReload" },
 ]
 
 runner = [
@@ -194,4 +205,6 @@ bookmarks = [
   { action = "change_category", label = "Change category", bind = "ctrl y", after = "Nothing" },
   { action = "change_browser", label = "Change browser", bind = "ctrl b", after = "Nothing" },
   { action = "import", label = "Import", bind = "ctrl i", after = "AsyncClearReload" },
+  { action = "create", bind = "ctrl a", after = "AsyncClearReload" },
+  { action = "search", bind = "ctrl a", after = "AsyncClearReload" },
 ]
