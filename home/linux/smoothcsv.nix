@@ -1,11 +1,12 @@
 { pkgs, ... }:
 let
   pname = "smoothcsv";
-  version = "3.8.0";
+  version = "3.9.3";
 
   src = pkgs.fetchurl {
-    url  = "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64_linux.AppImage";
-    hash = "sha256-2rcWB4PWcTjsYWwd2HvEZs++mKey+sXEoO2K+gcbA+o=";
+    url =
+      "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64.AppImage";
+    hash = "sha256-RR4OlyK/bCB4XDiyYI/bFVkQghCzZM1+ZWxXCwvUBF4=";
   };
 
   contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
@@ -24,8 +25,7 @@ let
       exec ${smoothcsv}/bin/smoothcsv "$@"
     '';
   };
-in
-{
+in {
   home.packages = [ smoothcsv smoothcsvWayland contents ];
 
   xdg.enable = true;
@@ -55,6 +55,4 @@ in
   #   };
   # };
 }
-
-
 
