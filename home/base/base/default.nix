@@ -19,5 +19,6 @@
     ./ai
     ./javascript.nix
     ./node2nix
+    ./rust.nix
   ];
 }
