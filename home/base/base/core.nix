@@ -1,36 +1,35 @@
-{ pkgs, pkgs-unstable, ... }:
-{
-  home.packages = with pkgs; [
-    # archives
-    zip
-    xz
-    unzip
-    p7zip
+{ pkgs, pkgs-unstable, ... }: {
+  home.packages = with pkgs;
+    [
+      # archives
+      zip
+      xz
+      unzip
+      p7zip
 
-    # utils
-    ripgrep
-    jq
-    yq-go
-    eza
-    visidata
+      # utils
+      ripgrep
+      jq
+      yq-go
+      eza
+      visidata
 
-    ghq # Remote repository management made easy
+      ghq # Remote repository management made easy
 
-    neofetch
+      neofetch
 
-    bat
-    python3Full
-    uv
-    lazysql
+      bat
+      python3Full
+      uv
+      lazysql
 
-    # aws
-    awscli2
-    ssm-session-manager-plugin
+      # aws
+      awscli2
+      ssm-session-manager-plugin
 
-    mariadb
-  ] ++ (with pkgs-unstable; [
-    devenv
-  ]);
+      mariadb
+      postgresql
+    ] ++ (with pkgs-unstable; [ devenv ]);
 
   programs.direnv = {
     enable = true;
