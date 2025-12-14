@@ -6,6 +6,7 @@ in  {
     ./hardware-configuration.nix
     ./configuration.nix
     ./boot.nix
+    ./network.nix
   ];
 
   # radiata 専用の overlay: tailscale のテストスキップを追加
@@ -33,8 +34,6 @@ in  {
     extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
     shell = pkgs.zsh;
   };
-
-  networking.hostName = "radiata";
 
   services.tailscale = {
     enable = true;
