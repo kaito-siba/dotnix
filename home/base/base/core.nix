@@ -29,6 +29,8 @@
 
       mariadb
       postgresql
+
+      fd
     ] ++ (with pkgs-unstable; [ devenv ]);
 
   programs.direnv = {
