@@ -13,5 +13,6 @@
     ./clipboard.nix
     ./walker
     ./smoothcsv.nix
+    ./obsidian.nix
   ];
 }

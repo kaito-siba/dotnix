@@ -1,11 +1,8 @@
-let
-  wallpaperPath = "~/nixos/assets/wallpaper_2.jpg";
+let wallpaperPath = "~/nixos/assets/wallpaper_2.jpg";
 in {
   # Define the user module as a function to receive { pkgs, ... }
   w963n = { pkgs, ... }: {
-    imports = [
-      ../../home/linux
-    ];
+    imports = [ ../../home/linux ];
 
     home = {
       username = "w963n";
@@ -19,10 +16,10 @@ in {
     systemd.user.targets.hyprland-session = {
       Unit = {
         Description = "Hyprland compositor session";
-        Documentation = ["man:systemd.special(7)"];
-        BindsTo = ["graphical-session.target"];
-        Wants = ["graphical-session-pre.target"];
-        After = ["graphical-session-pre.target"];
+        Documentation = [ "man:systemd.special(7)" ];
+        BindsTo = [ "graphical-session.target" ];
+        Wants = [ "graphical-session-pre.target" ];
+        After = [ "graphical-session-pre.target" ];
       };
     };
 
@@ -55,7 +52,6 @@ in {
         workspace = I, monitor:DP-6
         workspace = M, monitor:DP-6
         workspace = N, monitor:DP-6
-        workspace = O, monitor:DP-6
         workspace = P, monitor:DP-6
         workspace = R, monitor:DP-6
         workspace = T, monitor:DP-6
@@ -69,6 +65,7 @@ in {
         workspace = B, monitor:HDMI-A-3, persistent:true, default:true
         workspace = S, monitor:HDMI-A-3, persistent:true, default:false
         workspace = D, monitor:HDMI-A-3, persistent:true, default:false
+        workspace = O, monitor:HDMI-A-3, persistent:true, default:false
 
         windowrulev2 = float,        class:^(com\.github\.hluk\.copyq)$
         windowrulev2 = center,       class:^(com\.github\.hluk\.copyq)$

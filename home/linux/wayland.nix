@@ -51,6 +51,7 @@ in {
         "SUPER, B, exec, zen-twilight"
         "SUPER, T, exec, ghostty"
         "SUPER, S, exec, slack"
+        "SUPER, O, exec, obsidian"
         ''CTRL_SHIFT, code:11, exec, grim -g "$(slurp)" - | swappy -f -''
         "CTRL_SHIFT, code:12, exec, grim - | swappy -f -"
         ''
