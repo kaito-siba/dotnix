@@ -59,6 +59,7 @@
                   "slack"
                   "vscode"
                   "discord"
+                  "obsidian"
                 ];
             };
             inherit zen-browser walker ghostty;
