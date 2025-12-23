@@ -26,11 +26,9 @@
       variant = "";
     };
 
-    displayManager = {
-      gdm.enable = true;
-    };
+    displayManager = { gdm.enable = true; };
 
-    videoDrivers = ["nvidia"];
+    videoDrivers = [ "nvidia" ];
   };
 
   # Allow unfree packages
@@ -39,12 +37,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    zsh
-    git
-    wget
-    cudatoolkit
-  ];
+  environment.systemPackages = with pkgs; [ zsh git wget cudatoolkit ];
 
   hardware.graphics = {
     enable = true;
