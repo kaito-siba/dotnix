@@ -56,6 +56,8 @@
     powerManagement.enable = true;
   };
 
+  hardware.nvidia-container-toolkit.enable = true;
+
   nixpkgs.config.cudaSupport = true;
 
   # Some programs need SUID wrappers, can be configured further or are
