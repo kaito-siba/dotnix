@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    opencode = {
+      url = "github:sst/opencode";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -42,7 +47,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, ... }:
+    , zen-browser, walker, ghostty, opencode, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -60,9 +65,13 @@
                   "vscode"
                   "discord"
                   "obsidian"
+                  "cuda_cudart"
+                  "cuda_nvcc"
+                  "cuda_cccl"
+                  "libcublas"
                 ];
             };
-            inherit zen-browser walker ghostty;
+            inherit zen-browser walker ghostty opencode;
           };
         in [
           ./hosts/${host}

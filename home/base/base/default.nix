@@ -20,5 +20,8 @@
     ./javascript.nix
     ./node2nix
     ./rust.nix
+    ./opencode
+    ./ollama
+    ./llama
   ];
 }

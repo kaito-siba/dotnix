@@ -14,8 +14,4 @@ in
   home.packages = [
     lmstudio
   ];
-
-  services.ollama = {
-    enable = true;
-  };
 }

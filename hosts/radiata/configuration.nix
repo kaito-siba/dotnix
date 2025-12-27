@@ -70,6 +70,9 @@
     enable32Bit = true;
     extraPackages = with pkgs; [
       vulkan-loader
+      vaapiVdpau
+      libvdpau-va-gl
+      nvidia-vaapi-driver
     ];
     extraPackages32 = with pkgs; [
       vulkan-loader
@@ -83,15 +86,17 @@
     powerManagement.enable = true;
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+   wget
+   cudatoolkit
   ];
+
+  hardware.nvidia-container-toolkit.enable = true;
+
+  nixpkgs.config.cudaSupport = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
