@@ -27,10 +27,13 @@
       awscli2
       ssm-session-manager-plugin
 
-      mariadb
       postgresql
 
       fd
+      with-shell
+      lnav
+      zeal
+      mysql80
     ] ++ (with pkgs-unstable; [ devenv ]);
 
   programs.direnv = {
