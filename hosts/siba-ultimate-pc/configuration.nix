@@ -26,10 +26,10 @@
       variant = "";
     };
 
-    displayManager = { gdm.enable = true; };
-
     videoDrivers = [ "nvidia" ];
   };
+
+  displayManager = { gdm.enable = true; };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

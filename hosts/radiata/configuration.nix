@@ -26,11 +26,11 @@
       variant = "";
     };
 
-    displayManager = {
-      gdm.enable = true;
-    };
-
     videoDrivers = ["nvidia" "intel"];
+  };
+
+  services.displayManager = {
+    gdm.enable = true;
   };
 
   # # Enable the GNOME Desktop Environment.
@@ -47,7 +47,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

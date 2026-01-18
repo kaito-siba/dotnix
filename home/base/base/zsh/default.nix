@@ -17,8 +17,6 @@
       bindkey '^R' _atuin_search-widget
       bindkey -r '^T'
       bindkey '^F' fzf-file-widget
-    '';
-    initExtra = ''
       eval "$(sheldon source)"
     '';
   };

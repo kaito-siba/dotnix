@@ -2,10 +2,11 @@
 {
   programs.git = {
     enable = true;
-    userName = "k-nanchi";
-    userEmail = "kaito@siba-service.jp";
-    delta = {
-      enable = true;
+    settings = {
+      user = {
+        name = "k-nanchi";
+        email = "kaito@siba-service.jp";
+      };
     };
     lfs.enable = true;
     ignores = [
@@ -13,5 +14,10 @@
       ".direnv/"
     ];
   }; 
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+  };
 }
 
