@@ -14,5 +14,6 @@
     ./walker
     ./smoothcsv.nix
     ./obsidian.nix
+    ./noctalia.nix
   ];
 }

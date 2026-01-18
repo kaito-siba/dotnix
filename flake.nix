@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -47,7 +52,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, ... }:
+    , zen-browser, walker, ghostty, opencode, noctalia, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -71,7 +76,7 @@
                   "libcublas"
                 ];
             };
-            inherit zen-browser walker ghostty opencode;
+            inherit zen-browser walker ghostty opencode noctalia;
           };
         in [
           ./hosts/${host}
