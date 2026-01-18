@@ -13,7 +13,7 @@
   };
 
   fileSystems."/mnt/windows-esp" = {
-    device = "/dev/nvme0n1p1";
+    device = "/dev/disk/by-uuid/4E68-4C1A";
     fsType = "vfat";
     options = [ "nofail" "ro" ];
   };
