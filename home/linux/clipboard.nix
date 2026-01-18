@@ -5,34 +5,34 @@
   ];
 
   # text
-  systemd.user.services."cliphist-text" = {
-    Unit = {
-      Description = "cliphist store (text)";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
-      Restart = "always";
-      RestartSec = 1;
-    };
-    Install.WantedBy = [ "hyprland-session.target" ];
-  };
-
+  # systemd.user.services."cliphist-text" = {
+  #   Unit = {
+  #     Description = "cliphist store (text)";
+  #     After = [ "graphical-session.target" ];
+  #     PartOf = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type text --watch ${pkgs.cliphist}/bin/cliphist store";
+  #     Restart = "always";
+  #     RestartSec = 1;
+  #   };
+  #   Install.WantedBy = [ "hyprland-session.target" ];
+  # };
+  #
   # image
-  systemd.user.services."cliphist-image" = {
-    Unit = {
-      Description = "cliphist store (image)";
-      After = [ "graphical-session.target" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";
-      Restart = "always";
-      RestartSec = 1;
-    };
-    Install.WantedBy = [ "hyprland-session.target" ];
-  };
+  # systemd.user.services."cliphist-image" = {
+  #   Unit = {
+  #     Description = "cliphist store (image)";
+  #     After = [ "graphical-session.target" ];
+  #     PartOf = [ "graphical-session.target" ];
+  #   };
+  #   Service = {
+  #     ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --type image --watch ${pkgs.cliphist}/bin/cliphist store";
+  #     Restart = "always";
+  #     RestartSec = 1;
+  #   };
+  #   Install.WantedBy = [ "hyprland-session.target" ];
+  # };
 
   home.file.".local/bin/clipmenu-wofi".text = ''
     #!${pkgs.bash}/bin/bash
