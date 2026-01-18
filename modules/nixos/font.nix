@@ -15,7 +15,7 @@ in {
     packages = [
       pkgs.noto-fonts
       pkgs.noto-fonts-cjk-sans
-      pkgs.noto-fonts-emoji
+      pkgs.noto-fonts-color-emoji
       pkgs.dejavu_fonts
       pkgs.nerd-fonts.jetbrains-mono
       myFonts

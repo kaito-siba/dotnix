@@ -19,7 +19,6 @@
       neofetch
 
       bat
-      python3Full
       uv
       lazysql
 
