@@ -29,7 +29,7 @@
     videoDrivers = [ "nvidia" ];
   };
 
-  displayManager = { gdm.enable = true; };
+  services.displayManager = { gdm.enable = true; };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
