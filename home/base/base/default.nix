@@ -20,7 +20,7 @@
     ./javascript.nix
     ./node2nix
     ./rust.nix
-    ./opencode
+    # ./opencode
     ./ollama
     ./llama
   ];
