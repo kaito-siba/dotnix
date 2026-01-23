@@ -39,4 +39,8 @@
     enable = true;
     nix-direnv.enable = true;
   };
+
+  programs.mpv = {
+    enable = true;
+  };
 }
