@@ -659,8 +659,9 @@ binds {
     // Mod+Shift+Space { switch-layout "prev"; }
 
     Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Ctrl+Print { screenshot-window; }
+    Alt+Print { screenshot-screen; }
+    Shift+Print { spawn-sh "noctalia-shell ipc call plugin:screen-recorder toggle"; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here

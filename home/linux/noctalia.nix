@@ -4,6 +4,10 @@
     noctalia.homeModules.default
   ];
 
+  home.packages = with pkgs; [
+    gpu-screen-recorder
+  ];
+
   # configure options
   programs.noctalia-shell = {
     enable = true;
@@ -58,6 +62,9 @@
             {
               id = "NotificationHistory";
             }
+            {
+              id = "plugin:screen-recorder";
+            }
           ];
         };
       };
@@ -70,7 +77,23 @@
         monthBeforeDay = true;
         name = "Tokyo";
       };
-      systemd.enable = true;
+      # systemd.enable = true;
+    };
+    plugins = {
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
+      states = {
+        screen-recorder = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+      };
+      version = 1;
     };
     # this may also be a string or a path to a JSON file.
   };

@@ -152,13 +152,15 @@ in {
 
   xdg.configFile."xdg-desktop-portal/portals.conf".text = ''
     [preferred]
-    default=gtk
+    default=gnome;gtk;
     org.freedesktop.impl.portal.FileChooser=gtk
+    org.freedesktop.impl.portal.ScreenCast=gnome
+    org.freedesktop.impl.portal.RemoteDesktop=gnome
   '';
 
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    GDK_BACKEND = "wayland";
+    # GDK_BACKEND = "wayland";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
   };
