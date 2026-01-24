@@ -219,7 +219,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-        // off
+        off
 
         // How many logical pixels the ring extends out from the windows.
         width 2
@@ -258,10 +258,10 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        off
+        on
 
         width 4
-        active-color "#ffc87f"
+        active-color "#8839ef"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
@@ -322,6 +322,13 @@ layout {
         // right 64
         // top 64
         // bottom 64
+    }
+
+    blur {
+      on 
+      passes 3 // number of times to apply the blur effect
+      radius 1.0 // radius of the blur effect
+      noise 0.0 //add grain to the blur
     }
 }
 
@@ -409,7 +416,8 @@ window-rule {
 window-rule {
     geometry-corner-radius 20
     clip-to-geometry true
-    opacity 0.98
+    opacity 0.9
+    draw-border-with-background false
 }
 
 debug {

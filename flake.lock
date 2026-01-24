@@ -259,6 +259,28 @@
         "type": "github"
       }
     },
+    "niri-blur": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "rust-overlay": "rust-overlay"
+      },
+      "locked": {
+        "lastModified": 1769119684,
+        "narHash": "sha256-e+0PeGvsQNz8o/lhOEe6dHdaap2AMOQUC/buH91QAtI=",
+        "owner": "visualglitch91",
+        "repo": "niri",
+        "rev": "8756d0aff313617fc2af014d9bc43561532278ae",
+        "type": "github"
+      },
+      "original": {
+        "owner": "visualglitch91",
+        "ref": "feat/blur",
+        "repo": "niri",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1764242076,
@@ -385,7 +407,7 @@
         "crane": "crane",
         "flake-utils": "flake-utils_2",
         "nixpkgs": "nixpkgs_3",
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1761832913,
@@ -407,6 +429,7 @@
         "ghostty": "ghostty",
         "home-manager": "home-manager_2",
         "mysecrets": "mysecrets",
+        "niri-blur": "niri-blur",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia": "noctalia",
@@ -417,6 +440,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "niri-blur",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1757989933,
+        "narHash": "sha256-9cpKYWWPCFhgwQTww8S94rTXgg8Q8ydFv9fXM6I8xQM=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "8249aa3442fb9b45e615a35f39eca2fe5510d7c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "ragenix",

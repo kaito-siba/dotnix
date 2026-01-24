@@ -44,6 +44,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # use blur-compatible niri
+    niri-blur = {
+      url = "github:visualglitch91/niri/feat/blur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -52,7 +58,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, noctalia, ... }:
+    , zen-browser, walker, ghostty, opencode, noctalia, niri-blur, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -94,7 +100,7 @@
       nixosConfigurations = builtins.mapAttrs (host: system:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit ragenix mysecrets; };
+          specialArgs = { inherit ragenix mysecrets niri-blur; };
           modules = mkModules { inherit system host; };
         }) {
           siba-ultimate-pc = "x86_64-linux";
