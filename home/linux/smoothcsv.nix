@@ -1,12 +1,12 @@
 { pkgs, ... }:
 let
   pname = "smoothcsv";
-  version = "3.12.0";
+  version = "3.12.2";
 
   src = pkgs.fetchurl {
     url =
       "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64.AppImage";
-    hash = "sha256-U0HZRGo272dLjwsnDAX69JP1AprTxT79dsFy7aqnBLo=";
+    hash = "sha256-2V3e4Hu/K4HRsqG2y6neh+qMFrI3NkMi1JJHcaIsFkQ=";
   };
 
   contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
@@ -33,7 +33,7 @@ in {
     name = "SmoothCSV";
     genericName = "CSV Editor";
     comment = "SmoothCSV 3";
-    exec = "${smoothcsvWayland}/bin/smoothcsv-wayland %U";
+    exec = "cage -- ${smoothcsvWayland}/bin/smoothcsv-wayland %U";
     terminal = false;
     categories = [ "Utility" "Office" ];
     icon = "${contents}/${pname}-app.png";
