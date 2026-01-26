@@ -454,6 +454,7 @@ binds {
     Super+Space { spawn-sh "noctalia-shell ipc call launcher toggle"; }
     Super+V { spawn-sh "noctalia-shell ipc call launcher clipboard"; }
     Super+Alt+L { spawn-sh "noctalia-shell ipc call lockScreen lock"; }
+    Super+P { spawn-sh "noctalia-shell ipc call plugin:pomodoro toggle"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
