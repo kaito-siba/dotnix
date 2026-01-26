@@ -33,7 +33,7 @@ in {
     name = "SmoothCSV";
     genericName = "CSV Editor";
     comment = "SmoothCSV 3";
-    exec = "cage -- ${smoothcsvWayland}/bin/smoothcsv-wayland %U";
+    exec = "${smoothcsvWayland}/bin/smoothcsv-wayland %U";
     terminal = false;
     categories = [ "Utility" "Office" ];
     icon = "${contents}/${pname}-app.png";

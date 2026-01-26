@@ -1,5 +1,4 @@
-{ ... }:
-{
+{ ... }: {
   imports = [
     ./font.nix
     ./docker.nix
@@ -8,5 +7,6 @@
     ./core.nix
     ./niri.nix
     ./uwsm.nix
+    ./desktop.nix
   ];
 }
