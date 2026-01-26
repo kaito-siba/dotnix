@@ -116,7 +116,7 @@
     "screenOverrides": []
   },
   "general": {
-    "avatarImage": "/home/rkv12/nixos/assets/icons/icon_1.jpg",
+    "avatarImage": "~/nixos/assets/icons/icon_1.jpg",
     "dimmerOpacity": 0.2,
     "showScreenCorners": false,
     "forceBlackScreenCorners": false,
@@ -190,7 +190,7 @@
   "wallpaper": {
     "enabled": true,
     "overviewEnabled": true,
-    "directory": "/home/rkv12/nixos/assets/wallpapers",
+    "directory": "~/nixos/assets/wallpapers",
     "monitorDirectories": [],
     "enableMultiMonitorDirectories": false,
     "showHiddenFiles": false,
