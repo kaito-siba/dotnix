@@ -29,6 +29,18 @@
       ],
       "center": [
         {
+          "defaultSettings": {
+            "autoStartBreaks": false,
+            "autoStartWork": false,
+            "compactMode": false,
+            "longBreakDuration": 15,
+            "sessionsBeforeLongBreak": 4,
+            "shortBreakDuration": 5,
+            "workDuration": 25
+          },
+          "id": "plugin:pomodoro"
+        },
+        {
           "characterCount": 2,
           "colorizeIcons": false,
           "enableScrollWheel": true,
@@ -140,7 +152,8 @@
     "showChangelogOnStartup": true,
     "telemetryEnabled": false,
     "enableLockScreenCountdown": true,
-    "lockScreenCountdownDuration": 10000
+    "lockScreenCountdownDuration": 10000,
+    "autoStartAuth": false
   },
   "ui": {
     "fontDefault": "Sans Serif",
@@ -236,6 +249,7 @@
     "showCategories": false,
     "iconMode": "tabler",
     "showIconBackground": false,
+    "enableSettingsSearch": false,
     "ignoreMouseInput": false,
     "screenshotAnnotationTool": "gradia"
   },
