@@ -1,6 +1,7 @@
 {
-  "settingsVersion": 44,
+  "settingsVersion": 45,
   "bar": {
+    "barType": "floating",
     "position": "top",
     "monitors": [],
     "density": "compact",
@@ -12,6 +13,8 @@
     "floating": true,
     "marginVertical": 7,
     "marginHorizontal": 7,
+    "frameThickness": 8,
+    "frameRadius": 12,
     "outerCorners": true,
     "exclusive": true,
     "hideOnOverview": false,
@@ -43,14 +46,18 @@
         {
           "characterCount": 2,
           "colorizeIcons": false,
+          "emptyColor": "secondary",
           "enableScrollWheel": true,
+          "focusedColor": "primary",
           "followFocusedScreen": false,
           "groupedBorderOpacity": 1,
           "hideUnoccupied": false,
           "iconScale": 0.8,
           "id": "Workspace",
           "labelMode": "none",
+          "occupiedColor": "secondary",
           "showApplications": false,
+          "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
           "unfocusedIconsOpacity": 1
         },
@@ -110,7 +117,7 @@
         },
         {
           "customFont": "",
-          "formatHorizontal": "HH:mm",
+          "formatHorizontal": "MMM dd HH:mm",
           "formatVertical": "HH mm",
           "id": "Clock",
           "tooltipFormat": "HH:mm ddd, MMM dd",
