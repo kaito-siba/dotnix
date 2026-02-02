@@ -1,5 +1,5 @@
 {
-  "settingsVersion": 45,
+  "settingsVersion": 46,
   "bar": {
     "barType": "floating",
     "position": "top",
@@ -16,8 +16,10 @@
     "frameThickness": 8,
     "frameRadius": 12,
     "outerCorners": true,
-    "exclusive": true,
     "hideOnOverview": false,
+    "displayMode": "always_visible",
+    "autoHideDelay": 500,
+    "autoShowDelay": 150,
     "widgets": {
       "left": [
         {
@@ -56,6 +58,7 @@
           "id": "Workspace",
           "labelMode": "none",
           "occupiedColor": "secondary",
+          "reverseScroll": false,
           "showApplications": false,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
@@ -85,8 +88,10 @@
           "compactMode": true,
           "diskPath": "/",
           "id": "SystemMonitor",
+          "showCpuFreq": false,
           "showCpuTemp": true,
           "showCpuUsage": true,
+          "showDiskAsFree": false,
           "showDiskUsage": false,
           "showGpuTemp": false,
           "showLoadAverage": false,
@@ -128,7 +133,8 @@
           "hideWhenZero": false,
           "hideWhenZeroUnread": false,
           "id": "NotificationHistory",
-          "showUnreadBadge": true
+          "showUnreadBadge": true,
+          "unreadBadgeColor": "primary"
         }
       ]
     },
@@ -160,7 +166,8 @@
     "telemetryEnabled": false,
     "enableLockScreenCountdown": true,
     "lockScreenCountdownDuration": 10000,
-    "autoStartAuth": false
+    "autoStartAuth": false,
+    "allowPasswordWithFprintd": false
   },
   "ui": {
     "fontDefault": "Sans Serif",
@@ -238,13 +245,16 @@
     "wallhavenApiKey": "",
     "wallhavenResolutionMode": "atleast",
     "wallhavenResolutionWidth": "",
-    "wallhavenResolutionHeight": ""
+    "wallhavenResolutionHeight": "",
+    "sortOrder": "name"
   },
   "appLauncher": {
     "enableClipboardHistory": true,
-    "autoPasteClipboard": true,
+    "autoPasteClipboard": false,
     "enableClipPreview": true,
     "clipboardWrapText": true,
+    "clipboardWatchTextCommand": "wl-paste --type text --watch cliphist store",
+    "clipboardWatchImageCommand": "wl-paste --type image --watch cliphist store",
     "position": "center",
     "pinnedApps": [],
     "useApp2Unit": false,
@@ -257,6 +267,7 @@
     "iconMode": "tabler",
     "showIconBackground": false,
     "enableSettingsSearch": false,
+    "enableWindowsSearch": true,
     "ignoreMouseInput": false,
     "screenshotAnnotationTool": "gradia"
   },
