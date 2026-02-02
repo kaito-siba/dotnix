@@ -18,6 +18,7 @@ in {
       pkgs.noto-fonts-color-emoji
       pkgs.dejavu_fonts
       pkgs.nerd-fonts.jetbrains-mono
+      pkgs.maple-mono.NF-CN
       myFonts
     ];
 
