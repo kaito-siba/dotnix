@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    sqlit = {
+      url = "github:Maxteabag/sqlit";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,7 +63,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, noctalia, niri-blur, ... }:
+    , zen-browser, walker, ghostty, opencode, sqlit, noctalia, niri-blur, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -82,7 +87,7 @@
                   "libcublas"
                 ];
             };
-            inherit zen-browser walker ghostty opencode noctalia;
+            inherit zen-browser walker ghostty opencode sqlit noctalia;
           };
         in [
           ./hosts/${host}
