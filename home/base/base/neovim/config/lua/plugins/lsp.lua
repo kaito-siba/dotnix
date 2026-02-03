@@ -102,6 +102,11 @@ return {
 				intelephense = function(_, opts)
 					opts.settings = {
 						intelephense = {
+							files = {
+								exclude = {
+									"**/worktrees/**",
+								},
+							},
 							stubs = {
 								"apache",
 								"bcmath",
