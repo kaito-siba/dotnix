@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    kdePackages.dolphin
+    nautilus
     quickshell
+    adw-gtk3
+    qt6Packages.qt6ct
+    libsForQt5.qt5ct
   ];
 }

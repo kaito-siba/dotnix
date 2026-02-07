@@ -5,6 +5,7 @@
     ./core.nix
     ./screenshot.nix
     ./core.nix
+    ./gtk-qt.nix
 
     ./wayland.nix
     ./hyprlock.nix
@@ -15,5 +16,6 @@
     ./smoothcsv.nix
     ./obsidian.nix
     ./noctalia
+    ./dconf.nix
   ];
 }
