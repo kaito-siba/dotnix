@@ -67,6 +67,10 @@
           output_path = "~/.config/nvim/lua/data/lualine-colors.lua";
           post_hook = "pkill -SIGUSR1 nvim";
         };
+        starship = {
+          input_path = "~/.config/noctalia/templates/starship.toml";
+          output_path = "~/.config/starship.toml";
+        };
         nvim-base16 = {
           input_path = "~/.config/nvim/lua/data/matugen-template.lua";
           output_path = "~/.config/nvim/lua/data/matugen.lua";

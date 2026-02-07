@@ -1,0 +1,201 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+[](red)\
+$os\
+$username\
+[](bg:peach fg:red)\
+$directory\
+[](bg:yellow fg:peach)\
+$git_branch\
+$git_status\
+[](fg:yellow bg:green)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green bg:sapphire)\
+$conda\
+[](fg:sapphire bg:lavender)\
+$time\
+[ ](fg:lavender)\
+$cmd_duration\
+$line_break\
+$character"""
+
+palette = 'noctalia'
+
+[os]
+disabled = false
+style = "bg:red fg:on_red"
+format = "[$symbol]($style)"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:red fg:on_red"
+style_root = "bg:red fg:on_red"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:peach fg:on_peach"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:yellow"
+format = '[[ $symbol $branch ](fg:on_yellow bg:yellow)]($style)'
+
+[git_status]
+style = "bg:yellow"
+format = '[[($all_status$ahead_behind )](fg:on_yellow bg:yellow)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version) ](fg:on_green bg:green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:on_green bg:green)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:sapphire"
+format = '[[ $symbol( $context) ](fg:on_sapphire bg:sapphire)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:on_sapphire bg:sapphire"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:lavender"
+format = '[[  $time ](fg:on_lavender bg:lavender)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
+
+[cmd_duration]
+show_milliseconds = true
+format = " in $duration "
+style = "bg:lavender"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[palettes.noctalia]
+rosewater = "{{colors.tertiary.default.hex}}"
+flamingo = "{{colors.tertiary_fixed_dim.default.hex}}"
+pink = "{{colors.secondary.default.hex}}"
+mauve = "{{colors.secondary_fixed_dim.default.hex}}"
+red = "{{colors.error.default.hex}}"
+maroon = "{{colors.error_container.default.hex}}"
+peach = "{{colors.tertiary.default.hex}}"
+yellow = "{{colors.secondary.default.hex}}"
+green = "{{colors.primary.default.hex}}"
+teal = "{{colors.secondary.default.hex}}"
+sky = "{{colors.tertiary_fixed_dim.default.hex}}"
+sapphire = "{{colors.primary_fixed_dim.default.hex}}"
+blue = "{{colors.primary.default.hex}}"
+lavender = "{{colors.secondary_fixed_dim.default.hex}}"
+text = "{{colors.on_surface.default.hex}}"
+subtext1 = "{{colors.on_surface_variant.default.hex}}"
+subtext0 = "{{colors.outline.default.hex}}"
+overlay2 = "{{colors.outline.default.hex}}"
+overlay1 = "{{colors.outline.default.hex}}"
+overlay0 = "{{colors.outline.default.hex}}"
+surface2 = "{{colors.surface_container_high.default.hex}}"
+surface1 = "{{colors.surface_container.default.hex}}"
+surface0 = "{{colors.surface.default.hex}}"
+base = "{{colors.surface.default.hex}}"
+mantle = "{{colors.surface_container.default.hex}}"
+crust = "{{colors.on_surface.default.hex}}"
+on_red = "{{colors.on_error.default.hex}}"
+on_peach = "{{colors.on_tertiary.default.hex}}"
+on_yellow = "{{colors.on_secondary.default.hex}}"
+on_green = "{{colors.on_primary.default.hex}}"
+on_sapphire = "{{colors.on_primary.default.hex}}"
+on_lavender = "{{colors.on_secondary.default.hex}}"
