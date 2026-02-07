@@ -19,6 +19,9 @@ in {
       pkgs.dejavu_fonts
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.maple-mono.NF-CN
+      pkgs.source-han-sans
+      pkgs.source-han-serif
+      pkgs.ibm-plex
       myFonts
     ];
 
