@@ -7,5 +7,6 @@
     ./ai.nix
     ./zen-browser.nix
     ./ghostty
+    ./vesktop
   ];
 }
