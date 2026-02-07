@@ -71,6 +71,10 @@
           input_path = "~/.config/noctalia/templates/starship.toml";
           output_path = "~/.config/starship.toml";
         };
+        delta = {
+          input_path = "~/.config/noctalia/templates/delta.gitconfig";
+          output_path = "~/.config/delta/delta.gitconfig";
+        };
         nvim-base16 = {
           input_path = "~/.config/nvim/lua/data/matugen-template.lua";
           output_path = "~/.config/nvim/lua/data/matugen.lua";

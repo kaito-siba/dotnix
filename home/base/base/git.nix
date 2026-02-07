@@ -7,6 +7,9 @@
         name = "k-nanchi";
         email = "kaito@siba-service.jp";
       };
+      include = {
+        path = "~/.config/delta/delta.gitconfig";
+      };
     };
     lfs.enable = true;
     ignores = [
@@ -20,4 +23,3 @@
     enableGitIntegration = true;
   };
 }
-
