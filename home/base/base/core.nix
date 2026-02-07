@@ -1,5 +1,7 @@
-{ pkgs, pkgs-unstable, ... }: {
-  home.packages = with pkgs;
+{ pkgs, pkgs-unstable, ... }:
+{
+  home.packages =
+    with pkgs;
     [
       # archives
       zip
@@ -17,6 +19,7 @@
       ghq # Remote repository management made easy
 
       neofetch
+      fastfetch
 
       bat
       uv
@@ -35,7 +38,8 @@
       mysql80
 
       matugen
-    ] ++ (with pkgs-unstable; [ devenv ]);
+    ]
+    ++ (with pkgs-unstable; [ devenv ]);
 
   programs.direnv = {
     enable = true;
