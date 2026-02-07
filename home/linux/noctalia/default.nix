@@ -57,6 +57,16 @@
           output_path = "~/.config/tmux/noctalia.conf";
           post_hook = "tmux source-file ~/.config/tmux/noctalia.conf 2>/dev/null || true";
         };
+        lualine-theme = {
+          input_path = "~/.config/noctalia/templates/lualine-theme.lua";
+          output_path = "~/.config/nvim/lua/data/lualine-theme.lua";
+          post_hook = "pkill -SIGUSR1 nvim";
+        };
+        lualine-colors = {
+          input_path = "~/.config/noctalia/templates/lualine-colors.lua";
+          output_path = "~/.config/nvim/lua/data/lualine-colors.lua";
+          post_hook = "pkill -SIGUSR1 nvim";
+        };
         nvim-base16 = {
           input_path = "~/.config/nvim/lua/data/matugen-template.lua";
           output_path = "~/.config/nvim/lua/data/matugen.lua";
