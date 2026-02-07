@@ -55,7 +55,14 @@
         tmux-theme = {
           input_path = "~/.config/noctalia/templates/tmux.conf";
           output_path = "~/.config/tmux/noctalia.conf";
-          post_hook = "tmux source-file ~/.config/tmux/noctalia.conf 2>/dev/null || true";
+          post_hook = ''
+            TMUX=
+            runtime_dir="$XDG_RUNTIME_DIR"
+            if [ -z "$runtime_dir" ]; then
+              runtime_dir="/run/user/$(id -u)"
+            fi
+            /etc/profiles/per-user/$(id -un)/bin/tmux -S "$runtime_dir/tmux-$(id -u)/default" source-file ~/.config/tmux/noctalia.conf 2>/dev/null || true
+          '';
         };
         lualine-theme = {
           input_path = "~/.config/noctalia/templates/lualine-theme.lua";
