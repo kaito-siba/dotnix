@@ -38,6 +38,8 @@
       mysql80
 
       matugen
+
+      python314
     ]
     ++ (with pkgs-unstable; [ devenv ]);
 
