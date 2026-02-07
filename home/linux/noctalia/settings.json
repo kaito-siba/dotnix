@@ -497,7 +497,6 @@
   },
   "colorSchemes": {
     "useWallpaperColors": false,
-    "predefinedScheme": "Catppuccin",
     "schedulingMode": "location",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
@@ -505,8 +504,41 @@
     "monitorForColors": ""
   },
   "templates": {
-    "activeTemplates": [],
-    "enableUserTheming": false
+    "activeTemplates": [
+      {
+        "enabled": true,
+        "id": "discord"
+      },
+      {
+        "enabled": true,
+        "id": "ghostty"
+      },
+      {
+        "enabled": true,
+        "id": "gtk"
+      },
+      {
+        "enabled": true,
+        "id": "kcolorscheme"
+      },
+      {
+        "enabled": true,
+        "id": "qt"
+      },
+      {
+        "enabled": true,
+        "id": "yazi"
+      },
+      {
+        "enabled": true,
+        "id": "zenBrowser"
+      },
+      {
+        "enabled": true,
+        "id": "code"
+      }
+    ],
+    "enableUserTheming": true
   },
   "nightLight": {
     "enabled": false,

@@ -44,8 +44,29 @@
         compactMode = true;
       };
     };
+
+    user-templates = {
+      config = {};
+      templates = {
+        niri-transparent = {
+          input_path = "~/.config/noctalia/templates/niri-transparent.kdl";
+          output_path = "~/.config/niri/noctalia-transparent.kdl";
+        };
+        tmux-theme = {
+          input_path = "~/.config/noctalia/templates/tmux.conf";
+          output_path = "~/.config/tmux/noctalia.conf";
+          post_hook = "tmux source-file ~/.config/tmux/noctalia.conf 2>/dev/null || true";
+        };
+        nvim-base16 = {
+          input_path = "~/.config/nvim/lua/data/matugen-template.lua";
+          output_path = "~/.config/nvim/lua/data/matugen.lua";
+          post_hook = "pkill -SIGUSR1 nvim";
+        };
+      };
+    };
     # this may also be a string or a path to a JSON file.
   };
 
   xdg.configFile."noctalia/settings.json".source = ./settings.json;
+  xdg.configFile."noctalia/templates".source = ./templates;
 }

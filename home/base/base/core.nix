@@ -33,6 +33,8 @@
       lnav
       zeal
       mysql80
+
+      matugen
     ] ++ (with pkgs-unstable; [ devenv ]);
 
   programs.direnv = {

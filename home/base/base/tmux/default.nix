@@ -31,32 +31,6 @@
             set -g @continuum-save-interval '5' # save every 5 minutes
           '';
         }
-        {
-          plugin = catppuccin;
-          extraConfig = ''
-
-            set -g @catppuccin_flavour 'macchiato' # or latte, frappe, macchiato, mocha
-            set -g @catppuccin_window_right_separator ""
-            # set -g @catppuccin_window_right_separator "█"
-            set -g @catppuccin_window_left_separator ""
-            # set -g @catppuccin_window_left_separator ""
-            set -g @catppuccin_window_number_position "left"
-            set -g @catppuccin_window_middle_separator " "
-            set -g @catppuccin_window_default_text "#W"
-            set -g @catppuccin_window_default_fill "none"
-            set -g @catppuccin_window_current_fill "all"
-            set -g @catppuccin_window_current_text "#W"
-            set -g @catppuccin_status_modules_right "user host session"
-            set -g @catppuccin_status_left_separator  " "
-            # set -g @catppuccin_status_left_separator "█"
-            set -g @catppuccin_status_right_separator ""
-            # set -g @catppuccin_status_right_separator "█"
-            set -g @catppuccin_status_right_separator_inverse "no"
-            set -g @catppuccin_status_fill "all"
-            set -g @catppuccin_status_connect_separator "no"
-            set -g @catppuccin_directory_text "#{pane_current_path}"
-          '';
-        }
       ];
 
     extraConfig = with config.theme; with pkgs.tmuxPlugins;
@@ -107,14 +81,8 @@
       #  Theme Setting
       #
 
-      # transparent statusbar
-      set-option -g status-style bg=default
-
-      set -g status-left "#[fg=#8aadf4]󰰡#[fg=#f7768e] #S#[bg=#1a1b2c]"
-      set -g window-status-format "#[bg=#1a1b2c]#[fg=#8087a2]#I #W  #[fg=#8087a2]"
-      set -g window-status-current-format "#[fg=#e0af68]#I #W  #[fg=#e0af68]"
-      set -g status-justify centre
-      set -g status-right '#[fg=#ff9e64] #[fg=#ff9e64] %Y-%m-%d '
+      # Load Noctalia-generated theme
+      source-file ~/.config/tmux/noctalia.conf
 
 
       #################################################
@@ -153,4 +121,3 @@
     '';
   };
 }
-

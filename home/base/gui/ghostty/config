@@ -1,3 +1,5 @@
-theme = Catppuccin Mocha
+theme = noctalia
 font-family = Maple Mono NF CN
 window-decoration = none
+window-padding-x = 12
+window-padding-y = 12
