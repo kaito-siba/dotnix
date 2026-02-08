@@ -100,15 +100,19 @@
   };
 
   # for dynamic gnome color scheme switching with theme hook
-  home.file.".local/bin/set-gnome-color-scheme".text = ''
-    #!${pkgs.bash}/bin/bash
-    if [ "$1" = "true" ]; then
-      gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    else
-      gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-    fi
-  '';
-  home.file.".local/bin/set-gnome-color-scheme".executable = true;
+  # home.file.".local/bin/set-gnome-color-scheme".text = ''
+  #   #!${pkgs.bash}/bin/bash
+  #   if [ "$1" = "true" ]; then
+  #     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+  #   else
+  #     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+  #   fi
+  # '';
+
+  home.file.".local/bin/set-gnome-color-schema" = {
+    source = ./scripts/set-gnome-color-schema;
+    executable = true;
+  };
 
   xdg.configFile."noctalia/settings.json".source = ./settings.json;
   xdg.configFile."noctalia/templates".source = ./templates;

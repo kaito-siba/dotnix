@@ -297,7 +297,7 @@
           "id": "WallpaperSelector"
         },
         {
-          "id": "NoctaliaPerformance"
+          "id": "DarkMode"
         }
       ],
       "right": [
@@ -506,6 +506,7 @@
   "colorSchemes": {
     "useWallpaperColors": false,
     "predefinedScheme": "Rose Pine",
+    "darkMode": false,
     "schedulingMode": "location",
     "manualSunrise": "06:30",
     "manualSunset": "18:30",
@@ -561,7 +562,7 @@
   "hooks": {
     "enabled": true,
     "wallpaperChange": "",
-    "darkModeChange": "/home/$(id -un)/.local/bin/set-gnome-color-scheme $1",
+    "darkModeChange": "/home/$(id -un)/.local/bin/set-gnome-color-schema $1",
     "screenLock": "",
     "screenUnlock": "",
     "performanceModeEnabled": "",
