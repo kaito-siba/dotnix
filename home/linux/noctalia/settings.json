@@ -559,9 +559,9 @@
     "manualSunset": "18:30"
   },
   "hooks": {
-    "enabled": false,
+    "enabled": true,
     "wallpaperChange": "",
-    "darkModeChange": "",
+    "darkModeChange": "/home/$(id -un)/.local/bin/set-gnome-color-scheme $1",
     "screenLock": "",
     "screenUnlock": "",
     "performanceModeEnabled": "",

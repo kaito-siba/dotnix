@@ -40,6 +40,7 @@
       matugen
 
       python314
+      glib
     ]
     ++ (with pkgs-unstable; [ devenv ]);
 

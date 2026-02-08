@@ -1,17 +1,24 @@
-{ pkgs, noctalia, ... }: {
+{ pkgs, noctalia, ... }:
+{
   imports = [ noctalia.homeModules.default ];
 
-  home.packages = with pkgs; [ gpu-screen-recorder wtype gradia ];
+  home.packages = with pkgs; [
+    gpu-screen-recorder
+    wtype
+    gradia
+  ];
 
   # configure options
   programs.noctalia-shell = {
     enable = true;
     plugins = {
-      sources = [{
-        enabled = true;
-        name = "Official Noctalia Plugins";
-        url = "https://github.com/noctalia-dev/noctalia-plugins";
-      }];
+      sources = [
+        {
+          enabled = true;
+          name = "Official Noctalia Plugins";
+          url = "https://github.com/noctalia-dev/noctalia-plugins";
+        }
+      ];
       states = {
         screen-recorder = {
           enabled = true;
@@ -46,7 +53,7 @@
     };
 
     user-templates = {
-      config = {};
+      config = { };
       templates = {
         niri-transparent = {
           input_path = "~/.config/noctalia/templates/niri-transparent.kdl";
@@ -91,6 +98,17 @@
     };
     # this may also be a string or a path to a JSON file.
   };
+
+  # for dynamic gnome color scheme switching with theme hook
+  home.file.".local/bin/set-gnome-color-scheme".text = ''
+    #!${pkgs.bash}/bin/bash
+    if [ "$1" = "true" ]; then
+      gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    else
+      gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
+    fi
+  '';
+  home.file.".local/bin/set-gnome-color-scheme".executable = true;
 
   xdg.configFile."noctalia/settings.json".source = ./settings.json;
   xdg.configFile."noctalia/templates".source = ./templates;

@@ -4,7 +4,6 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       gtk-theme = "adw-gtk3";
-      color-scheme = "prefer-dark";
     };
   };
 }
