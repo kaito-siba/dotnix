@@ -1,7 +1,8 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     ./font.nix
-    ./docker.nix
+    ./develop.nix
     ./i18n.nix
     ./greetd.nix
     ./core.nix

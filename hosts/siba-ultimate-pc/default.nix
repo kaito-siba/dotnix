@@ -1,6 +1,13 @@
-{ pkgs, config, mysecrets, ... }:
-let username = "w963n";
-in {
+{
+  pkgs,
+  config,
+  mysecrets,
+  ...
+}:
+let
+  username = "w963n";
+in
+{
   imports = [
     ../../modules/nixos
     ./hardware-configuration.nix
@@ -14,7 +21,15 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     description = "w963n";
-    extraGroups = [ "networkmanager" "wheel" "audio" "video" "docker" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "audio"
+      "video"
+      "docker"
+      "libvirtd"
+      "kvm"
+    ];
     shell = pkgs.zsh;
   };
 
