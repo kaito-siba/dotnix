@@ -24,5 +24,6 @@
     # ./opencode
     ./ollama
     ./llama
+    ./nix.nix
   ];
 }
