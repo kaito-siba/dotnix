@@ -13,8 +13,41 @@ return {
 				-- pyright will be automatically installed with mason and loaded with lspconfig
 				pyright = {},
 				nixd = {},
+				biome = {},
 			},
 		},
+	},
+
+	{
+		"neovim/nvim-lspconfig",
+		init = function()
+			LazyVim.on_very_lazy(function()
+				LazyVim.format.register({
+					name = "biome-code-actions",
+					primary = true,
+					priority = 250,
+					format = function(buf)
+						require("config.biome_code_actions").apply_on_save(buf)
+						LazyVim.lsp.format({
+							bufnr = buf,
+							name = "biome",
+						})
+					end,
+					sources = function(buf)
+						local clients = vim.lsp.get_clients({
+							bufnr = buf,
+							name = "biome",
+						})
+						for _, client in ipairs(clients) do
+							if client:supports_method("textDocument/formatting") then
+								return { "biome" }
+							end
+						end
+						return {}
+					end,
+				})
+			end)
+		end,
 	},
 
 	-- add tsserver and setup with typescript.nvim instead of lspconfig
