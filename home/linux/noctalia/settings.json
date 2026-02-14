@@ -80,7 +80,7 @@
           "showAlbumArt": true,
           "showArtistFirst": true,
           "showProgressRing": true,
-          "showVisualizer": false,
+          "showVisualizer": true,
           "textColor": "none",
           "useFixedWidth": false,
           "visualizerType": "linear"
@@ -215,7 +215,7 @@
     "fontFixedScale": 1,
     "tooltipsEnabled": true,
     "panelBackgroundOpacity": 0.8,
-    "panelsAttachedToBar": true,
+    "panelsAttachedToBar": false,
     "settingsPanelMode": "centered",
     "wifiDetailsViewMode": "grid",
     "bluetoothDetailsViewMode": "grid",
@@ -302,7 +302,7 @@
     "pinnedApps": [],
     "useApp2Unit": false,
     "sortByMostUsed": true,
-    "terminalCommand": "xterm -e",
+    "terminalCommand": "ghostty -e",
     "customLaunchPrefixEnabled": false,
     "customLaunchPrefix": "",
     "viewMode": "list",
@@ -394,13 +394,7 @@
     "diskAvailCriticalThreshold": 10,
     "batteryWarningThreshold": 20,
     "batteryCriticalThreshold": 5,
-    "cpuPollingInterval": 1000,
-    "gpuPollingInterval": 3000,
     "enableDgpuMonitoring": false,
-    "memPollingInterval": 1000,
-    "diskPollingInterval": 30000,
-    "networkPollingInterval": 1000,
-    "loadAvgPollingInterval": 3000,
     "useCustomColors": false,
     "warningColor": "#31748f",
     "criticalColor": "#eb6f92",
@@ -424,17 +418,20 @@
   },
   "network": {
     "wifiEnabled": true,
+    "airplaneModeEnabled": false,
     "bluetoothRssiPollingEnabled": false,
     "bluetoothRssiPollIntervalMs": 10000,
     "wifiDetailsViewMode": "grid",
     "bluetoothDetailsViewMode": "grid",
-    "bluetoothHideUnnamedDevices": false
+    "bluetoothHideUnnamedDevices": false,
+    "disableDiscoverability": false
   },
   "sessionMenu": {
     "enableCountdown": true,
     "countdownDuration": 10000,
     "position": "center",
     "showHeader": true,
+    "showKeybinds": true,
     "largeButtonsStyle": false,
     "largeButtonsLayout": "grid",
     "powerOptions": [
@@ -520,7 +517,8 @@
     "enabledTypes": [
       0,
       1,
-      2
+      2,
+      3
     ],
     "monitors": []
   },
