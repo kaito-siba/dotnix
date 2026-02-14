@@ -9,5 +9,6 @@
     ./niri.nix
     ./uwsm.nix
     ./desktop.nix
+    ./shell.nix
   ];
 }
