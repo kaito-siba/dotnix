@@ -87,7 +87,7 @@
                   "libcublas"
                 ];
             };
-            inherit zen-browser walker ghostty opencode sqlit noctalia;
+            inherit zen-browser walker ghostty opencode sqlit noctalia mysecrets ragenix;
           };
         in [
           ./hosts/${host}

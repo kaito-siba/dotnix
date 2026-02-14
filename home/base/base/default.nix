@@ -25,5 +25,6 @@
     ./ollama
     ./llama
     ./nix.nix
+    ./calendar.nix
   ];
 }
