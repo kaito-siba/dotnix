@@ -26,5 +26,6 @@
     ./llama
     ./nix.nix
     ./calendar.nix
+    ./password-manager.nix
   ];
 }
