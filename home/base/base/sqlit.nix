@@ -2,17 +2,18 @@
 let
   sqlitPkg = sqlit.packages.${pkgs.system}.default;
 
-  sqlitPython =
-    if sqlitPkg ? python then sqlitPkg.python
-    else if sqlitPkg ? passthru && sqlitPkg.passthru ? python then
-      sqlitPkg.passthru.python
-    else
-      pkgs.python3;
+  sqlitPython = if sqlitPkg ? python then
+    sqlitPkg.python
+  else if sqlitPkg ? passthru && sqlitPkg.passthru ? python then
+    sqlitPkg.passthru.python
+  else
+    pkgs.python3;
 
   pyPkgs = sqlitPython.pkgs;
   driverPath = pyPkgs.makePythonPath [
     pyPkgs.pymysql
     pyPkgs.psycopg2-binary
+    pyPkgs.sshtunnel
   ];
 
   sqlitWithDrivers = pkgs.symlinkJoin {
@@ -24,9 +25,4 @@ let
         --prefix PYTHONPATH : ${driverPath}
     '';
   };
-in
-{
-  home.packages = [
-    sqlitWithDrivers
-  ];
-}
+in { home.packages = [ sqlitWithDrivers ]; }
