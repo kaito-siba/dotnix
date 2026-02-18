@@ -60,7 +60,6 @@
           "labelMode": "none",
           "occupiedColor": "secondary",
           "pillSize": 0.6,
-          "reverseScroll": false,
           "showApplications": false,
           "showBadge": true,
           "showLabelsOnlyWhenOccupied": true,
@@ -206,7 +205,8 @@
       "keyRemove": [
         "Del"
       ]
-    }
+    },
+    "reverseScroll": false
   },
   "ui": {
     "fontDefault": "IBM Plex Sans JP",
@@ -404,6 +404,7 @@
     "enabled": false,
     "position": "bottom",
     "displayMode": "auto_hide",
+    "dockType": "floating",
     "backgroundOpacity": 1,
     "floatingRatio": 1,
     "size": 1,
@@ -414,7 +415,9 @@
     "pinnedStatic": false,
     "inactiveIndicators": false,
     "deadOpacity": 0.6,
-    "animationSpeed": 1
+    "animationSpeed": 1,
+    "sitOnFrame": false,
+    "showFrameIndicator": true
   },
   "network": {
     "wifiEnabled": true,
@@ -481,6 +484,7 @@
   },
   "notifications": {
     "enabled": true,
+    "enableMarkdown": true,
     "density": "default",
     "monitors": [],
     "location": "top_right",
@@ -490,6 +494,7 @@
     "lowUrgencyDuration": 3,
     "normalUrgencyDuration": 8,
     "criticalUrgencyDuration": 15,
+    "clearDismissed": true,
     "saveToHistory": {
       "low": true,
       "normal": true,
