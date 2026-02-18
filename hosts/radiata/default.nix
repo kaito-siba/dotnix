@@ -37,7 +37,7 @@ in
       "audio"
       "video"
       "docker"
-      "libvritd"
+      "libvirtd"
       "kvm"
     ];
     shell = pkgs.zsh;
