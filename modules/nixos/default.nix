@@ -10,5 +10,6 @@
     ./uwsm.nix
     ./desktop.nix
     ./shell.nix
+    ./hardware.nix
   ];
 }
