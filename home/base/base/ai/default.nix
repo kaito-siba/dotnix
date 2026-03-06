@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, claude-code, ... }:
 let
   codex-rs = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
@@ -20,7 +20,10 @@ let
   };
 in
 {
-  home.packages = [ codex-rs ];
+  home.packages = [
+    codex-rs
+    claude-code.packages.${pkgs.system}.default
+  ];
 
   home.file = {
     ".codex/" = {

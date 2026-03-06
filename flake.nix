@@ -39,6 +39,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    claude-code = {
+      url = "github:sadjow/claude-code-nix?ref=latest";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     sqlit = {
       url = "github:Maxteabag/sqlit";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -63,7 +68,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, sqlit, noctalia, niri-blur, ... }:
+    , zen-browser, walker, ghostty, opencode, claude-code, sqlit, noctalia, niri-blur, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -87,13 +92,20 @@
                   "libcublas"
                 ];
             };
-            inherit zen-browser walker ghostty opencode sqlit noctalia mysecrets ragenix;
+            inherit zen-browser walker ghostty opencode claude-code sqlit noctalia mysecrets ragenix;
           };
         in [
           ./hosts/${host}
           ragenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
+            nix.settings = {
+              substituters = [ "https://claude-code.cachix.org" ];
+              trusted-public-keys = [
+                "claude-code.cachix.org-1:YeXf2aNu7UTX8Vwrze0za1WEDS+4DuI2kVeWEE4fsRk="
+              ];
+            };
+
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
