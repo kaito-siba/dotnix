@@ -60,6 +60,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     #TODO use nightly
     # wezterm = {
     #   url = "github:wez/wezterm?dir=nix";
@@ -68,7 +73,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, claude-code, sqlit, noctalia, niri-blur, ... }:
+    , zen-browser, walker, ghostty, opencode, claude-code, sqlit, noctalia, niri-blur, xremap, ... }:
     let
       systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
 
@@ -93,7 +98,7 @@
                   "google-chrome"
                 ];
             };
-            inherit zen-browser walker ghostty opencode claude-code sqlit noctalia mysecrets ragenix;
+            inherit zen-browser walker ghostty opencode claude-code sqlit noctalia mysecrets ragenix xremap;
           };
         in [
           ./hosts/${host}
@@ -118,11 +123,12 @@
       nixosConfigurations = builtins.mapAttrs (host: system:
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit ragenix mysecrets niri-blur; };
+          specialArgs = { inherit ragenix mysecrets niri-blur xremap; };
           modules = mkModules { inherit system host; };
         }) {
           siba-ultimate-pc = "x86_64-linux";
           radiata = "x86_64-linux";
+          corebook = "x86_64-linux";
         };
 
       formatter =
