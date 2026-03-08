@@ -90,6 +90,7 @@
                   "cuda_nvcc"
                   "cuda_cccl"
                   "libcublas"
+                  "google-chrome"
                 ];
             };
             inherit zen-browser walker ghostty opencode claude-code sqlit noctalia mysecrets ragenix;

@@ -3,7 +3,6 @@
   home.packages =
     (with pkgs; [
       dbeaver-bin
-      google-chrome
       zeal
       geary
     ])
@@ -11,5 +10,6 @@
       slack
       discord
       obsidian
+      google-chrome
     ]);
 }
