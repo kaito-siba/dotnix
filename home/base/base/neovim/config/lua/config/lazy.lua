@@ -27,6 +27,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.markdown" },
 		{ import = "lazyvim.plugins.extras.ai.sidekick" },
 		{ import = "lazyvim.plugins.extras.editor.harpoon2" },
+		{ import = "lazyvim.plugins.extras.editor.mini-diff" },
 		-- import/override with your plugins
 		{ import = "plugins" },
 	},
