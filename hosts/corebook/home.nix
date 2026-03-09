@@ -1,0 +1,22 @@
+let
+  wallpaperPath = "~/nixos/assets/wallpaper_3.jpg";
+in
+{
+  # Define the user module as a function to receive { pkgs, ... }
+  rkv12 =
+    { pkgs, ... }:
+    {
+      imports = [
+        ../../home/linux
+      ];
+
+      home = {
+        username = "rkv12";
+        homeDirectory = "/home/rkv12";
+        stateVersion = "25.11";
+        sessionVariables = {
+          NIXOS_OZONE_WL = "1"; # Electron apps to use Wayland
+        };
+      };
+    };
+}

@@ -1,0 +1,34 @@
+{ xremap, ... }:
+{
+  imports = [ xremap.nixosModules.default ];
+  services.xremap = {
+    enable = true;
+    withNiri = true;
+  };
+  services.xremap.config.modmap = [
+    {
+      name = "Global";
+      remap = {
+        "CapsLock" = "Ctrl_L";
+        "Ctrl_L" = "CapsLock";
+      };
+    }
+    {
+      name = "IME switching";
+      # You need to set the action of 'Muhenkan' to 'Deactivate IME' from the mozc settings and remove all Shift + 'Muhenkan' entries.
+      # mozc settings location: fcitx-configtool -> Addons -> Mozc -> Configuration Tool -> Keymap Style
+      remap = {
+        "Alt_L" = {
+          held = "Alt_L";
+          alone = "Muhenkan";
+          alone_timeout_mills = 200;
+        };
+        "Alt_R" = {
+          held = "Alt_R";
+          alone = "Hiragana";
+          alone_timeout_mills = 200;
+        };
+      };
+    }
+  ];
+}
