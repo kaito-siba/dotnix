@@ -89,6 +89,9 @@
       ],
       "right": [
         {
+          "id": "plugin:model-usage"
+        },
+        {
           "compactMode": true,
           "diskPath": "/",
           "iconColor": "primary",

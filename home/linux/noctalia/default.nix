@@ -40,6 +40,10 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        model-usage = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
       version = 1;
     };
@@ -62,6 +66,19 @@
             icon = "screen-share";
           }
         ];
+      };
+      model-usage = {
+        refreshIntervalSec = 30;
+        barCycleIntervalSec = 5;
+        providers = {
+          codex = {
+            enabled = true;
+          };
+          claude = {
+            enabled = true;
+          };
+        };
+        barMetric = "usage";
       };
     };
 
