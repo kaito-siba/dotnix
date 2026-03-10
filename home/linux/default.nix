@@ -17,5 +17,6 @@
     ./obsidian.nix
     ./noctalia
     ./dconf.nix
+    ./screencast.nix
   ];
 }

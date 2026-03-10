@@ -36,6 +36,10 @@
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
+        custom-commands = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
       };
       version = 1;
     };
@@ -49,6 +53,15 @@
         autoStartBreaks = true;
         autoStartWork = true;
         compactMode = true;
+      };
+      custom-commands = {
+        commands = [
+          {
+            name = "Mirror Focused Screen";
+            command = "wl-mirror \"$(niri msg --json focused-output | jq -r .name)\"";
+            icon = "screen-share";
+          }
+        ];
       };
     };
 
