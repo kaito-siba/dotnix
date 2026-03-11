@@ -65,6 +65,11 @@
             command = "wl-mirror \"$(niri msg --json focused-output | jq -r .name)\"";
             icon = "screen-share";
           }
+          {
+            name = "Restart Slack";
+            command = "pkill -HUP slack && slack";
+            icon = "brand-slack";
+          }
         ];
       };
       model-usage = {
