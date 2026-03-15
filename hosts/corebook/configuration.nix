@@ -45,6 +45,7 @@
       "networkmanager"
       "wheel"
       "uinput"
+      "libvirtd"
     ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
