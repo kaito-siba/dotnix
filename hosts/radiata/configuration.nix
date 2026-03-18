@@ -133,6 +133,13 @@
     localNetworkGameTransfers.openFirewall = true;
   };
 
+  services.sunshine = {
+    enable = true;
+    autoStart = true;
+    capSysAdmin = true;
+    openFirewall = true;
+  };
+
   nix.settings.trusted-users = [ "root" "rkv12" ];
 
   services.greetd.settings.initial_session.user = "rkv12";
