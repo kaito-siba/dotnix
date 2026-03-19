@@ -20,19 +20,19 @@ let
   };
   takt = pkgs.buildNpmPackage rec {
     pname = "takt";
-    version = "0.32.1";
+    version = "0.32.2";
 
     src = pkgs.fetchurl {
       url = "https://registry.npmjs.org/${pname}/-/${pname}-${version}.tgz";
-      hash = "sha256-wA08cdwQq08l9CL0JzXYzYHLvq3WyhYMNK112lWxClA=";
+      hash = "sha256-Cpx4vo0xMmin/miwoHiZBpa1VVJZLQZDp3+Y3C+rnsA=";
     };
 
-    npmDepsHash = "sha256-3uyaIvfl0LOZBoVnzih9UVAkTFGeWNPAqfaTOSNYqI4=";
+    npmDepsHash = "sha256-G6ucc8sgBNnwr7IjCoiAeYqtRiC7WHBtQuRCjHCT8sE=";
 
     postPatch = ''
       cp ${pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/nrslib/takt/v${version}/package-lock.json";
-        hash = "sha256-VmgPIpUI8Wvj7Q+CeLrIcFrCu+fW31eh+PgrpeNK8pA=";
+        hash = "sha256-UhwqZxcR0xHa+dk0+HxlKDTYUg7/OPnBSBQmRvllXLo=";
       }} package-lock.json
     '';
 
