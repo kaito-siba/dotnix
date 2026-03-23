@@ -8,5 +8,6 @@
     ./zen-browser.nix
     ./ghostty
     ./vesktop
+    ./activitywatch.nix
   ];
 }
