@@ -2,11 +2,11 @@
 let
   codex-rs = pkgs.stdenv.mkDerivation rec {
     pname = "codex";
-    version = "0.114.0";
+    version = "0.116.0";
 
     src = pkgs.fetchurl {
       url = "https://github.com/openai/codex/releases/download/rust-v${version}/codex-x86_64-unknown-linux-musl.tar.gz";
-      sha256 = "sha256-kinejFHI7zBWW7UHyXou3ASoCzjkmkNj8zf+Bb7fNOs=";
+      sha256 = "sha256-r6CJwDLDExeSGrwC+4gUU67UqoADWEEhce/NBp7OoeM=";
     };
 
     dontUnpack = true;
@@ -20,19 +20,19 @@ let
   };
   takt = pkgs.buildNpmPackage rec {
     pname = "takt";
-    version = "0.32.2";
+    version = "0.33.0";
 
     src = pkgs.fetchurl {
       url = "https://registry.npmjs.org/${pname}/-/${pname}-${version}.tgz";
-      hash = "sha256-Cpx4vo0xMmin/miwoHiZBpa1VVJZLQZDp3+Y3C+rnsA=";
+      hash = "sha256-iZkX9pXfdRuxfCNbxL+/IKow3pd1lYrKQddcknS2sSg=";
     };
 
-    npmDepsHash = "sha256-G6ucc8sgBNnwr7IjCoiAeYqtRiC7WHBtQuRCjHCT8sE=";
+    npmDepsHash = "sha256-LPgTjxsavkrgraLAivkwwrRlTSltYekqbFCyXf8eSE0=";
 
     postPatch = ''
       cp ${pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/nrslib/takt/v${version}/package-lock.json";
-        hash = "sha256-UhwqZxcR0xHa+dk0+HxlKDTYUg7/OPnBSBQmRvllXLo=";
+        hash = "sha256-lYvwBX1f0znIvrkKuS0IT8kqOWTaoTWuO4cmOc/DjDg=";
       }} package-lock.json
     '';
 
