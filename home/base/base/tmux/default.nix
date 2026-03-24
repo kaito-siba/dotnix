@@ -9,7 +9,38 @@
     prefix = "C-q";
     mouse = true;
     baseIndex = 1;
-    plugins = with pkgs.tmuxPlugins;
+    plugins =
+      let
+        aw-watcher-tmux = pkgs.tmuxPlugins.mkTmuxPlugin {
+          pluginName = "aw-watcher-tmux";
+          version = "unstable-2024-06-02";
+          rtpFilePath = "aw-watcher-tmux.tmux";
+          src = pkgs.fetchFromGitHub {
+            owner = "akohlbecker";
+            repo = "aw-watcher-tmux";
+            rev = "efaa7610add52bd2b39cd98d0e8e082b1e126487";
+            sha256 = "sha256-L6YLyEOmb+vdz6bJdB0m5gONPpBp2fV3i9PiLSNrZNM=";
+          };
+          postInstall = ''
+            cat > "$target/aw-watcher-tmux.tmux" <<'EOF'
+            #!${pkgs.bash}/bin/bash
+
+            CURRENT_DIR="$(cd "$(dirname "''${BASH_SOURCE[0]}")" && pwd)"
+            SCRIPT="$CURRENT_DIR/scripts/monitor-session-activity.sh"
+
+            # `source-file` reloads every plugin entry synchronously.
+            # Detach the watcher completely so tmux does not block on reload,
+            # and do not start duplicates when the config is sourced again.
+            if ! ${pkgs.procps}/bin/pgrep -f "$SCRIPT" >/dev/null; then
+              ${pkgs.coreutils}/bin/nohup "$SCRIPT" >/dev/null 2>&1 &
+            fi
+            EOF
+
+            chmod +x "$target/aw-watcher-tmux.tmux"
+          '';
+        };
+      in
+      with pkgs.tmuxPlugins;
       [
         sensible
         yank
@@ -31,93 +62,96 @@
             set -g @continuum-save-interval '5' # save every 5 minutes
           '';
         }
+        aw-watcher-tmux
       ];
 
-    extraConfig = with config.theme; with pkgs.tmuxPlugins;
-    ''
-      #################################################
-      #
-      #  BASIC Setting
-      #
-      
-      # ペインの番号を 1 から開始
-      setw -g pane-base-index 1
-      # ウィンドウを閉じた時に番号を詰める
-      set-option -g renumber-windows on
-      
-      set -s escape-time 0
-      
-      #################################################
-      #
-      #  KEY BINDING Setting
-      #
-      
-      # use vim keybind
-      set-window-option -g mode-keys vi
-      
-      #  vimのコピーを適用
-      bind -T copy-mode-vi 'v' send -X begin-selection
-      bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
-      bind -T copy-mode-vi 'V' send-keys -X select-line
-      bind -T copy-mode-vi 'Escape' send-keys -X clear-selection
-      
-      #  Ctrl-o でペインをローテーションしながら移動
-      # bind -n C-o select-pane -t :.+
-      
-      # 設定ファイルをリロード
-      bind-key -T prefix r source-file ~/.config/tmux/tmux.conf \; display-message 'Reloard was successful.'
+    extraConfig =
+      with config.theme;
+      with pkgs.tmuxPlugins;
+      ''
+        #################################################
+        #
+        #  BASIC Setting
+        #
 
-      # toggle popup
-      bind C-p popup -xC -yC -w95% -h95% -E -d "#{pane_current_path}" '\
-        if [ popup = $(tmux display -p -F "#{session_name}") ]; then \
-          tmux detach-client ; \
-        else \
-          tmux attach -c $(tmux display -p -F "#{pane_current_path}") -t popup || tmux new -s popup ; \
-        fi \
-      '
-      
-      #################################################
-      #
-      #  Theme Setting
-      #
+        # ペインの番号を 1 から開始
+        setw -g pane-base-index 1
+        # ウィンドウを閉じた時に番号を詰める
+        set-option -g renumber-windows on
 
-      # Load Noctalia-generated theme
-      source-file ~/.config/tmux/noctalia.conf
+        set -s escape-time 0
+
+        #################################################
+        #
+        #  KEY BINDING Setting
+        #
+
+        # use vim keybind
+        set-window-option -g mode-keys vi
+
+        #  vimのコピーを適用
+        bind -T copy-mode-vi 'v' send -X begin-selection
+        bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
+        bind -T copy-mode-vi 'V' send-keys -X select-line
+        bind -T copy-mode-vi 'Escape' send-keys -X clear-selection
+
+        #  Ctrl-o でペインをローテーションしながら移動
+        # bind -n C-o select-pane -t :.+
+
+        # 設定ファイルをリロード
+        bind-key -T prefix r source-file ~/.config/tmux/tmux.conf \; display-message 'Reloard was successful.'
+
+        # toggle popup
+        bind C-p popup -xC -yC -w95% -h95% -E -d "#{pane_current_path}" '\
+          if [ popup = $(tmux display -p -F "#{session_name}") ]; then \
+            tmux detach-client ; \
+          else \
+            tmux attach -c $(tmux display -p -F "#{pane_current_path}") -t popup || tmux new -s popup ; \
+          fi \
+        '
+
+        #################################################
+        #
+        #  Theme Setting
+        #
+
+        # Load Noctalia-generated theme
+        source-file ~/.config/tmux/noctalia.conf
 
 
-      #################################################
-      #
-      #  Other Setting
-      #
-      
-      # yazi image preview
-      set -g allow-passthrough on
-      set -ga update-environment TERM
-      set -ga update-environment TERM_PROGRAM
-      
-      #################################################
-      #
-      #  PLUGIN Setting
-      #
-      
-      # Key bindings
-      # prefix + I: Installs new plugins from GitHub or any other git repository
-      # prefix + U: updates plugin(s)
-      # prefix + option + u: remove/uninstall plugins not on the plugin list
-      
-      # # List of plugins
-      # run shell '${sensible}/share/tmux-plugins/sensible/sensible.tmux'
-      # # ペイン操作のキーバインド追加
-      # run shell '${pain-control}/share/tmux-plugins/pain-control/pain-control.tmux'
-      # # 表示内容を正規表現で検索
-      # run shell '${copycat}/share/tmux-plugins/copycat/copycat.tmux'
-      # # システムのクリップボードにコピー
-      # run shell '${yank}/share/tmux-plugins/yank/yank.tmux'
-      # # ハイライトしているファイルやURLを開く
-      # run shell '${open}/share/tmux-plugins/open/open.tmux'
-      # # # catppuccin theme
-      # # run shell '${catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux'
-      # # run shell '${battery}/share/tmux-plugins/battery/battery.tmux'
-    '';
+        #################################################
+        #
+        #  Other Setting
+        #
+
+        # yazi image preview
+        set -g allow-passthrough on
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
+
+        #################################################
+        #
+        #  PLUGIN Setting
+        #
+
+        # Key bindings
+        # prefix + I: Installs new plugins from GitHub or any other git repository
+        # prefix + U: updates plugin(s)
+        # prefix + option + u: remove/uninstall plugins not on the plugin list
+
+        # # List of plugins
+        # run shell '${sensible}/share/tmux-plugins/sensible/sensible.tmux'
+        # # ペイン操作のキーバインド追加
+        # run shell '${pain-control}/share/tmux-plugins/pain-control/pain-control.tmux'
+        # # 表示内容を正規表現で検索
+        # run shell '${copycat}/share/tmux-plugins/copycat/copycat.tmux'
+        # # システムのクリップボードにコピー
+        # run shell '${yank}/share/tmux-plugins/yank/yank.tmux'
+        # # ハイライトしているファイルやURLを開く
+        # run shell '${open}/share/tmux-plugins/open/open.tmux'
+        # # # catppuccin theme
+        # # run shell '${catppuccin}/share/tmux-plugins/catppuccin/catppuccin.tmux'
+        # # run shell '${battery}/share/tmux-plugins/battery/battery.tmux'
+      '';
   };
 }
