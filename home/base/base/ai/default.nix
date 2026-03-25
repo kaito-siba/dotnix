@@ -30,10 +30,12 @@ let
     npmDepsHash = "sha256-LPgTjxsavkrgraLAivkwwrRlTSltYekqbFCyXf8eSE0=";
 
     postPatch = ''
-      cp ${pkgs.fetchurl {
-        url = "https://raw.githubusercontent.com/nrslib/takt/v${version}/package-lock.json";
-        hash = "sha256-lYvwBX1f0znIvrkKuS0IT8kqOWTaoTWuO4cmOc/DjDg=";
-      }} package-lock.json
+      cp ${
+        pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/nrslib/takt/v${version}/package-lock.json";
+          hash = "sha256-lYvwBX1f0znIvrkKuS0IT8kqOWTaoTWuO4cmOc/DjDg=";
+        }
+      } package-lock.json
     '';
 
     dontNpmBuild = true;
@@ -42,12 +44,14 @@ let
 
     postInstall = ''
       wrapProgram $out/bin/takt \
-        --prefix PATH : ${pkgs.lib.makeBinPath [
-          pkgs.nodejs_20
-          pkgs.bash
-          pkgs.git
-          pkgs.gh
-        ]}
+        --prefix PATH : ${
+          pkgs.lib.makeBinPath [
+            pkgs.nodejs_20
+            pkgs.bash
+            pkgs.git
+            pkgs.gh
+          ]
+        }
     '';
   };
 in
@@ -56,6 +60,7 @@ in
     codex-rs
     claude-code.packages.${pkgs.system}.default
     takt
+    pkgs.bubblewrap # for sandboxing codex
   ];
 
   home.file = {
