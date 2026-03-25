@@ -491,7 +491,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Super+T { spawn "ghostty"; }
+    Super+T { spawn "wezterm"; }
     Super+B { spawn "zen-twilight"; }
     Super+O { spawn "obsidian"; }
     Super+S { spawn "slack"; }

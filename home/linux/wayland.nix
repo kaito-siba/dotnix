@@ -49,7 +49,7 @@ in {
       bind = [
         "SUPER, SPACE, exec, walker"
         "SUPER, B, exec, zen-twilight"
-        "SUPER, T, exec, ghostty"
+        "SUPER, T, exec, wezterm"
         "SUPER, S, exec, slack"
         "SUPER, O, exec, obsidian"
         ''CTRL_SHIFT, code:11, exec, grim -g "$(slurp)" - | swappy -f -''
@@ -161,6 +161,8 @@ in {
   home.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
     # GDK_BACKEND = "wayland";
+    # Xwayland clients such as WezTerm use XIM for IME integration.
+    XMODIFIERS = "@im=fcitx";
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt6ct";
     SDL_VIDEODRIVER = "wayland";
