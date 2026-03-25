@@ -1,19 +1,20 @@
 { pkgs, ... }:
 let
   pname = "smoothcsv";
-  version = "3.15.1";
+  version = "3.16.0";
 
   src = pkgs.fetchurl {
-    url =
-      "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64.AppImage";
-    hash = "sha256-IS7RCiPMZ70/sctLTekvI5t9PwPX3Tx2iLgYsllMlw4=";
+    url = "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64.AppImage";
+    hash = "sha256-zqmsQBCCIgEN3MOJJlfG8pjRe/21naJUZfszy0B8+kk=";
   };
 
   contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
 
   smoothcsv = pkgs.appimageTools.wrapType2 {
     inherit pname version src;
-    meta = { mainProgram = pname; };
+    meta = {
+      mainProgram = pname;
+    };
   };
 
   smoothcsvWayland = pkgs.writeShellApplication {
@@ -25,8 +26,13 @@ let
       exec ${smoothcsv}/bin/smoothcsv "$@"
     '';
   };
-in {
-  home.packages = [ smoothcsv smoothcsvWayland contents ];
+in
+{
+  home.packages = [
+    smoothcsv
+    smoothcsvWayland
+    contents
+  ];
 
   xdg.enable = true;
   xdg.desktopEntries.${pname} = {
@@ -35,7 +41,10 @@ in {
     comment = "SmoothCSV 3";
     exec = "${smoothcsvWayland}/bin/smoothcsv-wayland %U";
     terminal = false;
-    categories = [ "Utility" "Office" ];
+    categories = [
+      "Utility"
+      "Office"
+    ];
     icon = "${contents}/${pname}-app.png";
   };
 
@@ -55,4 +64,3 @@ in {
   #   };
   # };
 }
-
