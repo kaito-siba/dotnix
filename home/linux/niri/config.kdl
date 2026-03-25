@@ -430,6 +430,9 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+    opacity 0.97
+    geometry-corner-radius 20
+    clip-to-geometry true
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -460,6 +463,7 @@ window-rule {
 window-rule {
     geometry-corner-radius 20
     clip-to-geometry true
+    exclude app-id=r#"^org\.wezfurlong\.wezterm$"#
     opacity 0.9
     // draw-border-with-background false
 }
