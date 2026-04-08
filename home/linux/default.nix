@@ -18,5 +18,6 @@
     ./noctalia
     ./dconf.nix
     ./screencast.nix
+    ./onlyoffice.nix
   ];
 }
