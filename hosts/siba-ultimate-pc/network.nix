@@ -14,4 +14,9 @@
     interfaces.enp129s0 = { wakeOnLan.enable = true; };
     firewall = { allowedUDPPorts = [ 9 ]; };
   };
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
 }
