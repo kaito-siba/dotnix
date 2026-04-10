@@ -6,6 +6,19 @@
     gpu-screen-recorder
     wtype
     gradia
+
+    # for screen toolkit
+    grim
+    slurp
+    wl-clipboard
+    tesseract
+    imagemagick
+    zbar
+    curl
+    translate-shell
+    wl-screenrec
+    ffmpeg
+    gifski
   ];
 
   # configure options
@@ -41,6 +54,10 @@
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
         model-usage = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        screen-toolkit = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
