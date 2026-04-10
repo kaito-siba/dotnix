@@ -29,6 +29,7 @@
       # aws
       awscli2
       ssm-session-manager-plugin
+      stu
 
       postgresql
 
