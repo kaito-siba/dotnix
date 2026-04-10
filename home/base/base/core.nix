@@ -15,6 +15,7 @@
       yq-go
       eza
       visidata
+      ffmpeg
 
       ghq # Remote repository management made easy
 
