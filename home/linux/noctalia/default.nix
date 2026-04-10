@@ -19,6 +19,9 @@
     wl-screenrec
     ffmpeg
     gifski
+
+    # for file search
+    fd
   ];
 
   # configure options
@@ -58,6 +61,10 @@
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
         screen-toolkit = {
+          enabled = true;
+          sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+        };
+        file-search = {
           enabled = true;
           sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
         };
