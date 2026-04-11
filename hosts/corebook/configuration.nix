@@ -85,6 +85,8 @@
   programs.dconf.enable = true;
   services.greetd.settings.initial_session.user = "rkv12";
 
+  hardware.xpadneo.enable = true;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
