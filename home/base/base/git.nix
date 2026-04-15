@@ -13,10 +13,9 @@
     };
     lfs.enable = true;
     ignores = [
-      ".envrc"
       ".direnv/"
     ];
-  }; 
+  };
 
   programs.delta = {
     enable = true;
