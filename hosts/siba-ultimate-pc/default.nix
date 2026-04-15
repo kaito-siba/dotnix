@@ -15,6 +15,7 @@ in
     ./boot.nix
     ./network.nix
     ./user.nix
+    ./keyboard.nix
   ];
 
   programs.zsh.enable = true;
