@@ -368,12 +368,13 @@ layout {
         // bottom 64
     }
 
-    blur {
-      off
-      passes 3 // number of times to apply the blur effect
-      radius 1.0 // radius of the blur effect
-      noise 0.0 //add grain to the blur
-    }
+}
+
+blur {
+    passes 2        // more passes = stronger blur (default: 3)
+    offset 3.0      // sample distance per pass (default: 3.0)
+    noise 0.03      // grain overlay (default: 0.02)
+    saturation 1.0  // color saturation boost (default: 1.5)
 }
 
 // Add lines like this to spawn processes at startup.
@@ -468,6 +469,14 @@ window-rule {
     // draw-border-with-background false
 }
 
+/* Apps: blur them all without xray for a better look */
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
 debug {
   // Allows notification actions and window activation from Noctalia.
   honor-xdg-activation-with-invalid-serial
@@ -477,6 +486,14 @@ debug {
 layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
+}
+
+/* Noctalia: blur everywhere without xray for a better look */
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  background-effect {
+    xray false
+  }
 }
 
 binds {

@@ -1,6 +1,6 @@
-{ niri-blur, pkgs, ... }: {
+{ niri, pkgs, ... }: {
   programs.niri = {
     enable = true;
-    package = niri-blur.packages.${pkgs.system}.niri;
+    package = niri.packages.${pkgs.system}.niri;
   };
 }
