@@ -1,5 +1,21 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
+let
+  awSyncLocal = pkgs.writeShellScript "aw-sync-local" ''
+    set -euo pipefail
+    buckets=$(${pkgs.curl}/bin/curl -sf http://127.0.0.1:5600/api/0/buckets/ \
+      | ${pkgs.jq}/bin/jq -r 'to_entries
+          | map(select(.value.data["$aw.sync.origin"] == null))
+          | map(.key) | join(",")')
+    if [ -z "$buckets" ]; then
+      echo "aw-sync-local: no local buckets found, skipping" >&2
+      exit 0
+    fi
+    exec ${pkgs.activitywatch}/bin/aw-sync sync --mode both --buckets "$buckets"
+  '';
+in
 {
+  imports = [ ./syncthing.nix ];
+
   services.activitywatch = {
     enable = true;
     watchers = { };
@@ -32,6 +48,42 @@
 
     Install = {
       WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
+  services.syncthing.settings.folders = {
+    "ActivityWatchSync" = {
+      path = "${config.home.homeDirectory}/ActivityWatchSync";
+      id = "activitywatch-sync";
+    };
+  };
+
+  systemd.user.services.aw-sync = {
+    Unit = {
+      Description = "aw-sync for ActivityWatch (local buckets only)";
+      After = [ "activitywatch.service" ];
+      Requires = [ "activitywatch.service" ];
+    };
+
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${awSyncLocal}";
+    };
+  };
+
+  systemd.user.timers.aw-sync = {
+    Unit = {
+      Description = "Run aw-sync periodically";
+    };
+
+    Timer = {
+      OnBootSec = "2min";
+      OnUnitActiveSec = "5min";
+      Unit = "aw-sync.service";
+    };
+
+    Install = {
+      WantedBy = [ "timers.target" ];
     };
   };
 }

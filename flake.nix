@@ -104,6 +104,8 @@
           ragenix.nixosModules.default
           home-manager.nixosModules.home-manager
           {
+            nixpkgs.overlays = [ (import ./overlays/activitywatch.nix) ];
+
             nix.settings = {
               substituters = [ "https://claude-code.cachix.org" ];
               trusted-public-keys = [
