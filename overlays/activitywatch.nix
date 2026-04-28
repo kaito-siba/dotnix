@@ -32,5 +32,10 @@ in
       };
       hash = cargoHash;
     };
+
+    # Upstream restricts to linux but the Rust code builds on darwin.
+    meta = old.meta // {
+      platforms = old.meta.platforms ++ [ "x86_64-darwin" "aarch64-darwin" ];
+    };
   });
 }

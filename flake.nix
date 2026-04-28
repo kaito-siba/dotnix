@@ -132,6 +132,14 @@
           corebook = "x86_64-linux";
         };
 
+      homeConfigurations."k-nanchi@mac" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          overlays = [ (import ./overlays/activitywatch.nix) ];
+        };
+        modules = [ ./home/darwin ];
+      };
+
       formatter =
         forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
