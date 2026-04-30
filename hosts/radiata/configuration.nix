@@ -26,10 +26,15 @@
       variant = "";
     };
 
-    videoDrivers = [ "nvidia" "intel" ];
+    videoDrivers = [
+      "nvidia"
+      "intel"
+    ];
   };
 
-  services.displayManager = { gdm.enable = true; };
+  services.displayManager = {
+    gdm.enable = true;
+  };
 
   # # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
@@ -94,7 +99,33 @@
 
   nixpkgs.config.cudaSupport = true;
 
-  hardware.bluetooth.enable = true;
+  # https://www.reddit.com/r/NixOS/comments/1hdsfz0/what_do_i_have_to_do_to_make_my_xbox_controller/
+  # Enable Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings.General = {
+      experimental = true; # show battery
+
+      # https://www.reddit.com/r/NixOS/comments/1ch5d2p/comment/lkbabax/
+      # for pairing bluetooth controller
+      Privacy = "device";
+      JustWorksRepairing = "always";
+      Class = "0x000100";
+      FastConnectable = true;
+    };
+  };
+  services.blueman.enable = true;
+
+  hardware.xpadneo.enable = true; # Enable the xpadneo driver for Xbox One wireless controllers
+
+  boot = {
+    extraModulePackages = with config.boot.kernelPackages; [ xpadneo ];
+    extraModprobeConfig = ''
+      options bluetooth disable_ertm=Y
+    '';
+    # connect xbox controller
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -124,7 +155,10 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   programs.steam = {
     enable = true;
@@ -143,7 +177,10 @@
     openFirewall = true;
   };
 
-  nix.settings.trusted-users = [ "root" "rkv12" ];
+  nix.settings.trusted-users = [
+    "root"
+    "rkv12"
+  ];
 
   services.greetd.settings.initial_session.user = "rkv12";
 }
