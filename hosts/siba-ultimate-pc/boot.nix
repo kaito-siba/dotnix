@@ -1,12 +1,17 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   lycoPkg = pkgs.stdenv.mkDerivation {
     pname = "grub-theme-lycoris-recoil";
     version = "1.0";
     src = pkgs.fetchFromGitHub {
-      owner = "13atm01"; 
+      owner = "13atm01";
       repo = "GRUB-Theme";
-      rev = "Lyco-v1.0"; 
+      rev = "Lyco-v1.0";
       hash = "sha256-yfXpMQCVpQjPdZ79f5tW5EkoGvRl3WZMIM0QRWzk/cQ=";
     };
     installPhase = ''
@@ -29,7 +34,11 @@ in
     gfxmodeEfi = "1920x1080";
     gfxpayloadEfi = "text";
   };
-  
+
   boot.loader.efi.efiSysMountPoint = "/boot";
+
+  # workaround for copy-fail-CVE-2026-31431
+  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
+    lib.mkDefault pkgs.linuxPackages_6_18
+  );
 }
-  

@@ -1,4 +1,9 @@
-{ config, pkg, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   fileSystems."/boot" = {
@@ -9,20 +14,26 @@
   fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/3FC0-A77D";
     fsType = "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/mnt/windows-esp" = {
     device = "/dev/disk/by-uuid/4E68-4C1A";
     fsType = "vfat";
-    options = [ "nofail" "ro" ];
+    options = [
+      "nofail"
+      "ro"
+    ];
   };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  
+
   # https://github.com/NixOS/nixpkgs/issues/316285
   boot.loader.grub.enable = false;
 
@@ -40,4 +51,9 @@
   };
 
   boot.loader.timeout = 10;
+
+  # workaround for copy-fail-CVE-2026-31431
+  boot.kernelPackages = lib.mkIf (lib.versionOlder pkgs.linux.version "6.18.22") (
+    lib.mkDefault pkgs.linuxPackages_6_18
+  );
 }
