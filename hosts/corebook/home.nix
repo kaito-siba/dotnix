@@ -25,5 +25,6 @@ in
       };
 
       xdg.configFile."niri/config.kdl".source = lib.mkForce corebookNiriConfig;
+      xdg.configFile."niri/outputs.kdl".source = lib.mkForce ./niri-outputs.kdl;
     };
 }

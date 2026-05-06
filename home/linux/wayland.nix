@@ -169,4 +169,5 @@ in {
   };
 
   xdg.configFile."niri/config.kdl".source = ./niri/config.kdl;
+  xdg.configFile."niri/outputs.kdl".source = ./niri/outputs.kdl;
 }

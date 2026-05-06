@@ -2,7 +2,7 @@ let
   wallpaperPath = "~/nixos/assets/wallpaper_3.jpg";
 in {
   # Define the user module as a function to receive { pkgs, ... }
-  rkv12 = { pkgs, ... }: {
+  rkv12 = { pkgs, lib, ... }: {
     imports = [
       ../../home/linux
     ];
@@ -15,6 +15,8 @@ in {
         NIXOS_OZONE_WL = "1"; # Electron apps to use Wayland
       };
     };
+
+    xdg.configFile."niri/outputs.kdl".source = lib.mkForce ./niri-outputs.kdl;
 
     # systemd.user.targets.hyprland-session = {
     #   Unit = {
