@@ -13,5 +13,8 @@
     font = {
       name = "Noto Sans CJK JP";
     };
+    gtk4.extraCss = ''
+      @import url("noctalia.css");
+    '';
   };
 }
