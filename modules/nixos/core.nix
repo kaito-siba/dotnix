@@ -11,11 +11,14 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib  # glibc, libstdc++ など
-    zlib openssl
+    stdenv.cc.cc.lib # glibc, libstdc++ など
+    zlib
+    openssl
   ];
 
   boot.extraModprobeConfig = ''
     options nvidia-drm modeset=1 fbdev=0
   '';
+
+  services.gvfs.enable = true;
 }
