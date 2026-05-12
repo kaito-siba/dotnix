@@ -7,7 +7,7 @@
         pagers = [
           {
             colorArg = "always";
-            pager = "delta --paging=never";
+            externalDiffCommand = "difft --color=always --display=inline --syntax-highlight=on --tab-width=2";
           }
         ];
       };

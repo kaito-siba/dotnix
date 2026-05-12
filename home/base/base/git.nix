@@ -7,9 +7,6 @@
         name = "k-nanchi";
         email = "kaito@siba-service.jp";
       };
-      include = {
-        path = "~/.config/delta/delta.gitconfig";
-      };
     };
     lfs.enable = true;
     ignores = [
@@ -17,8 +14,11 @@
     ];
   };
 
-  programs.delta = {
+  programs.difftastic = {
     enable = true;
-    enableGitIntegration = true;
+    git = {
+      enable = true;
+      diffToolMode = true;
+    };
   };
 }

@@ -2,7 +2,6 @@
 {
   programs.kitty = {
     enable = true;
-    enableGitIntegration = true;
     font = {
       name = "Maple Mono NF CN";
     };
