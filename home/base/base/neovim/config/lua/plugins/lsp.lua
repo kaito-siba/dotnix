@@ -138,6 +138,16 @@ return {
 							files = {
 								exclude = {
 									"**/worktrees/**",
+									"**/.git/**",
+									"**/node_modules/**",
+									"**/runtime/**",
+									"**/storage/**",
+									"**/cache/**",
+									"**/logs/**",
+									"**/public/assets/**",
+									"**/web/assets/**",
+									"**/dist/**",
+									"**/build/**",
 								},
 							},
 							stubs = {
