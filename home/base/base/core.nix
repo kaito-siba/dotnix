@@ -32,6 +32,7 @@
       stu
 
       postgresql
+      mysql-shell
 
       fd
       with-shell
