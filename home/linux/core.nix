@@ -6,5 +6,6 @@
     adw-gtk3
     qt6Packages.qt6ct
     libsForQt5.qt5ct
+    imv
   ];
 }
