@@ -3,11 +3,11 @@
 
   inputs = {
     # NixOS official package source, using the nixos-25.05 branch here
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,7 +22,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    elephant = { url = "github:abenz1267/elephant"; };
+    elephant = {
+      url = "github:abenz1267/elephant";
+    };
 
     walker = {
       url = "github:abenz1267/walker";
@@ -71,20 +73,47 @@
     # };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ragenix, mysecrets
-    , zen-browser, walker, ghostty, opencode, claude-code, sqlit, noctalia, niri, xremap, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      home-manager,
+      ragenix,
+      mysecrets,
+      zen-browser,
+      walker,
+      ghostty,
+      opencode,
+      claude-code,
+      sqlit,
+      noctalia,
+      niri,
+      xremap,
+      ...
+    }:
     let
-      systems = [ "x86_64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      systems = [
+        "x86_64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      mkModules = { host, system, user ? "w963n", }:
+      mkModules =
+        {
+          host,
+          system,
+          user ? "w963n",
+        }:
         let # substritute "x86_64-linux" => "linux"
           os = builtins.elemAt (builtins.match ".*-(.*)" system) 0;
           specialArgs = {
             pkgs-unstable = import nixpkgs-unstable {
               inherit system;
-              config.allowUnfreePredicate = pkg:
+              config.allowUnfreePredicate =
+                pkg:
                 builtins.elem (nixpkgs.lib.getName pkg) [
                   "slack"
                   "vscode"
@@ -97,9 +126,21 @@
                   "google-chrome"
                 ];
             };
-            inherit zen-browser walker ghostty opencode claude-code sqlit noctalia mysecrets ragenix xremap;
+            inherit
+              zen-browser
+              walker
+              ghostty
+              opencode
+              claude-code
+              sqlit
+              noctalia
+              mysecrets
+              ragenix
+              xremap
+              ;
           };
-        in [
+        in
+        [
           ./hosts/${host}
           ragenix.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -120,17 +161,30 @@
             home-manager.users = import ./hosts/${host}/home.nix;
           }
         ];
-    in {
-      nixosConfigurations = builtins.mapAttrs (host: system:
-        nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit ragenix mysecrets niri xremap; };
-          modules = mkModules { inherit system host; };
-        }) {
-          siba-ultimate-pc = "x86_64-linux";
-          radiata = "x86_64-linux";
-          corebook = "x86_64-linux";
-        };
+    in
+    {
+      nixosConfigurations =
+        builtins.mapAttrs
+          (
+            host: system:
+            nixpkgs.lib.nixosSystem {
+              inherit system;
+              specialArgs = {
+                inherit
+                  ragenix
+                  mysecrets
+                  niri
+                  xremap
+                  ;
+              };
+              modules = mkModules { inherit system host; };
+            }
+          )
+          {
+            siba-ultimate-pc = "x86_64-linux";
+            radiata = "x86_64-linux";
+            corebook = "x86_64-linux";
+          };
 
       homeConfigurations."k-nanchi@mac" = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
@@ -140,12 +194,14 @@
         modules = [ ./home/darwin ];
       };
 
-      formatter =
-        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
 
     auto-optimise-store = true;
   };
