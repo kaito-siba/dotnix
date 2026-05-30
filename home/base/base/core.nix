@@ -19,7 +19,6 @@
 
       ghq # Remote repository management made easy
 
-      neofetch
       fastfetch
 
       bat
@@ -38,7 +37,7 @@
       with-shell
       lnav
       zeal
-      mysql80
+      mysql84
 
       matugen
 

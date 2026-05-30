@@ -46,7 +46,7 @@ let
       wrapProgram $out/bin/takt \
         --prefix PATH : ${
           pkgs.lib.makeBinPath [
-            pkgs.nodejs_20
+            pkgs.nodejs_24
             pkgs.bash
             pkgs.git
             pkgs.gh
