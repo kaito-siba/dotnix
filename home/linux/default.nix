@@ -19,5 +19,6 @@
     ./dconf.nix
     ./screencast.nix
     ./onlyoffice.nix
+    ./obs.nix
   ];
 }
