@@ -8,6 +8,7 @@
     ./gtk-qt.nix
 
     ./wayland.nix
+    ./mozc.nix
     ./hyprlock.nix
     ./hyprpaper.nix
     ./hyprpanel.nix
