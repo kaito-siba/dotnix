@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
   pname = "smoothcsv";
-  version = "3.19.0";
+  version = "3.21.1";
 
   src = pkgs.fetchurl {
     url = "https://github.com/kohii/smoothcsv3/releases/download/v${version}/SmoothCSV_${version}_amd64.AppImage";
-    hash = "sha256-N8EU4C8NXWrbQA4sLifQZhGlTaj9Xihn2QQgIMOcFvI=";
+    hash = "sha256-dHgvnjExgwSmimx4Zgx46PIVeBRkV+IptSTsERmUPvU=";
   };
 
   contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
