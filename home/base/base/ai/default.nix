@@ -56,6 +56,8 @@ let
   };
 in
 {
+  imports = [ ./mimocode.nix ];
+
   home.packages = [
     codex-rs
     claude-code.packages.${pkgs.system}.default
