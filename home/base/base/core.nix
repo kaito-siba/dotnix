@@ -43,6 +43,7 @@
 
       python314
       glib
+      nvtopPackages.full
     ]
     ++ (with pkgs-unstable; [ devenv ]);
 
