@@ -1,10 +1,12 @@
-{ pkgs, lib, pkgs-unstable, ... }:
+{
+  pkgs,
+  lib,
+  llama-cpp,
+  ...
+}:
 {
   home.packages = [
-    # CUDA対応でビルド(llama-server含む)。GPUオフロードで高速化。
-    (pkgs-unstable.llama-cpp.override {
-      cudaSupport = true;
-    })
+    llama-cpp.packages.${pkgs.system}.cuda
   ];
 
   xdg.configFile."llama" = {
