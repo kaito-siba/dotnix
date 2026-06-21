@@ -22,7 +22,7 @@
     ./rust.nix
     ./sqlit.nix
     # ./opencode
-    ./ollama
+    # ./ollama
     ./llama
     ./nix.nix
     ./calendar.nix
