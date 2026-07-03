@@ -19,6 +19,30 @@ in {
         max_width = 1000;
 	max_height = 1000;
       };
+      opener = {
+        smoothcsv = [
+          {
+            run = ''setsid -f smoothcsv-wayland "$@" >/dev/null 2>&1'';
+            orphan = true;
+            desc = "SmoothCSV";
+          }
+        ];
+        reveal = [
+          {
+            run = ''setsid -f nautilus "$@" >/dev/null 2>&1'';
+            orphan = true;
+            desc = "Reveal in Nautilus";
+          }
+        ];
+      };
+      open = {
+        prepend_rules = [
+          {
+            url = "*.csv";
+            use = [ "smoothcsv" "edit" "reveal" ];
+          }
+        ];
+      };
     };
 
     plugins = {
