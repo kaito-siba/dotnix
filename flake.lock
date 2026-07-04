@@ -873,7 +873,7 @@
       "inputs": {
         "home-manager": "home-manager_4",
         "nixpkgs": [
-          "nixpkgs"
+          "nixpkgs-unstable"
         ]
       },
       "locked": {
