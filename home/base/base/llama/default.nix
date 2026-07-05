@@ -1,12 +1,13 @@
 {
   pkgs,
-  lib,
-  llama-cpp,
+  pkgs-unstable,
   ...
 }:
 {
   home.packages = [
-    llama-cpp.packages.${pkgs.system}.cuda
+    (pkgs-unstable.llama-cpp.override {
+      cudaSupport = true;
+    })
   ];
 
   xdg.configFile."llama" = {

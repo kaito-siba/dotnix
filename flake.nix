@@ -51,10 +51,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
-    };
-
     noctalia = {
       url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -94,7 +90,6 @@
       noctalia,
       niri,
       xremap,
-      llama-cpp,
       ...
     }:
     let
@@ -142,7 +137,6 @@
               mysecrets
               ragenix
               xremap
-              llama-cpp
               ;
           };
         in
