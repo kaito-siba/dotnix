@@ -346,6 +346,28 @@ window-rule {
   }
 }
 
+// for dennotai
+window-rule {
+  match app-id="dennotai-app"
+  open-floating true
+  default-floating-position x=32 y=32 relative-to="bottom-right"
+  default-column-width { fixed 440; }
+  default-window-height { fixed 720; }
+  open-focused false
+  opacity 1.0
+  // baba-is-float true
+
+  draw-border-with-background false
+  background-effect {
+    blur false
+    xray false
+  }
+
+  focus-ring {
+    off
+  }
+}
+
 debug {
   // Allows notification actions and window activation from Noctalia.
   honor-xdg-activation-with-invalid-serial
