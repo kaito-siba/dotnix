@@ -15,6 +15,9 @@
     };
     firewall = {
       allowedUDPPorts = [ 9 ];
+
+      # for dennotai
+      interfaces."tailscale0".allowedTCPPorts = [ 8790 ];
     };
   };
 }
