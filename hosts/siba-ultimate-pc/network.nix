@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   services.openssh = {
     enable = true;
     ports = [ 4824 ];
@@ -11,12 +12,28 @@
   networking = {
     hostName = "siba-ultimate-pc";
     firewall.allowedTCPPorts = [ 4824 ];
-    interfaces.enp129s0 = { wakeOnLan.enable = true; };
-    firewall = { allowedUDPPorts = [ 9 ]; };
+    interfaces.enp129s0 = {
+      wakeOnLan.enable = true;
+    };
+    firewall = {
+      allowedUDPPorts = [ 9 ];
+      interfaces."tailscale0".allowedTCPPorts = [ 8181 ];
+    };
   };
 
   services.avahi = {
     enable = true;
     nssmdns = true;
+  };
+
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    useRoutingFeatures = "client";
+    extraUpFlags = [ "--accept-dns=true" ];
+    extraSetFlags = [
+      "--ssh"
+      "--operator=$USER"
+    ];
   };
 }
