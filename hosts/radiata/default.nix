@@ -10,6 +10,7 @@ in
     ./boot.nix
     ./network.nix
     ./storage.nix
+    ./keyboard.nix
   ];
 
   # radiata 専用の overlay: tailscale のテストスキップを追加
