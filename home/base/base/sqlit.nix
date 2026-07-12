@@ -1,6 +1,11 @@
 { pkgs, sqlit, ... }:
 let
-  sqlitPkg = sqlit.packages.${pkgs.system}.default;
+  # `default` bundles all driver extras, including snowflake, whose
+  # snowflake-connector-python fails its test suite on Python 3.14.
+  # Build via makeSqlit with every extra except snowflake to avoid it.
+  sqlitPkg = sqlit.lib.${pkgs.system}.makeSqlit {
+    extras = [ "ssh" "postgres" "cockroachdb" "mysql" "duckdb" "bigquery" "d1" ];
+  };
 
   sqlitPython = if sqlitPkg ? python then
     sqlitPkg.python
