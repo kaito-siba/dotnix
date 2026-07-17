@@ -44,6 +44,8 @@
       python314
       glib
       nvtopPackages.full
+
+      intelephense
     ]
     ++ (with pkgs-unstable; [ devenv ]);
 
