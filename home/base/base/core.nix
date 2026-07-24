@@ -47,7 +47,10 @@
 
       intelephense
     ]
-    ++ (with pkgs-unstable; [ devenv ]);
+    ++ (with pkgs-unstable; [
+      devenv
+      keifu
+    ]);
 
   programs.direnv = {
     enable = true;
